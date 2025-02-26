@@ -7,63 +7,35 @@ public class PlatformerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float moveSpeed = 5f;
-    public float jumpForce = 14f;
-    private bool isJumping = false;
-
-    public int jumpcounter = 0;
-    public Animator animator;
-    float horizontalMovement = 0f;
+    public float rotationSpeed = 180f; // Degrees per second
     public float maxVelocity = 17f;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        horizontalMovement = horizontalInput * moveSpeed;
-        Vector2 moveVector = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
+        // Get input
+        float horizontalInput = Input.GetAxis("Horizontal"); // A/D or Left/Right arrows
+        float verticalInput = Input.GetAxis("Vertical");     // W/S or Up/Down arrows
 
-        animator.SetFloat("Speed", Mathf.Abs(horizontalMovement));
+        // Handle rotation
+        float rotationAmount = -horizontalInput * rotationSpeed * Time.deltaTime;
+        transform.Rotate(0, 0, rotationAmount);
 
-        // Handle jumping
-        if (Input.GetButtonDown("Jump") && jumpcounter < 2)
+        // Calculate movement direction based on current rotation
+        Vector2 forwardDirection = transform.up; // In 2D, "up" is the forward direction for sprites
+        Vector2 movement = forwardDirection * verticalInput * moveSpeed;
+
+        // Apply velocity
+        rb.velocity = movement;
+
+        // Cap max velocity
+        if (rb.velocity.magnitude > maxVelocity)
         {
-            moveVector.y = jumpForce;
-            isJumping = true;
-            jumpcounter++;
-            animator.SetBool("isJumping", true);
-        }
-
-        rb.velocity = moveVector;
-
-        // Flip character sprite based on direction
-        if (horizontalInput < 0)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
-        else if (horizontalInput > 0)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
-
-       if( rb.velocity.magnitude > maxVelocity){
-        rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
-       }
-    }
-
-    // This function is called when the object collides with something
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isJumping = false;
-            jumpcounter = 0;
-            animator.SetBool("isJumping", false);
+            rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
         }
     }
 }
