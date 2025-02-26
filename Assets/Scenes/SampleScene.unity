@@ -127,17 +127,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1189296957054305916, guid: 078205acf68187c4f90d224d4298b25d, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 3384519002795676514, guid: 078205acf68187c4f90d224d4298b25d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 51.5
       objectReference: {fileID: 0}
     - target: {fileID: 3384519002795676514, guid: 078205acf68187c4f90d224d4298b25d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -37.1
       objectReference: {fileID: 0}
     - target: {fileID: 3384519002795676514, guid: 078205acf68187c4f90d224d4298b25d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -172,20 +168,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6032805896405191320, guid: 078205acf68187c4f90d224d4298b25d, type: 3}
-      propertyPath: jumpForce
-      value: 5
+      propertyPath: moveSpeed
+      value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 7956484651469744910, guid: 078205acf68187c4f90d224d4298b25d, type: 3}
-      propertyPath: m_Constraints
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7956484651469744910, guid: 078205acf68187c4f90d224d4298b25d, type: 3}
-      propertyPath: m_Interpolate
-      value: 2
+    - target: {fileID: 6032805896405191320, guid: 078205acf68187c4f90d224d4298b25d, type: 3}
+      propertyPath: maxVelocity
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8967131376237411303, guid: 078205acf68187c4f90d224d4298b25d, type: 3}
       propertyPath: m_Name
-      value: Square
+      value: Player car
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -309,10 +301,6 @@ PrefabInstance:
     - target: {fileID: 6990511627326624154, guid: e594de6e1608070418054cc593c8dfa2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8393996662386568360, guid: e594de6e1608070418054cc593c8dfa2, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

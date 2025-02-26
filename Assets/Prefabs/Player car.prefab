@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7956484651469744910}
   - component: {fileID: 6032805896405191320}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Player car
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,6 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e98e2c1f451fb19408b29e0e52ee4309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 10
+  acceleration: 10
+  deceleration: 8
   rotationSpeed: 180
-  maxVelocity: 17
+  maxVelocity: 20
