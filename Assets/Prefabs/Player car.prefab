@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7956484651469744910}
   - component: {fileID: 6032805896405191320}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Player car
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
