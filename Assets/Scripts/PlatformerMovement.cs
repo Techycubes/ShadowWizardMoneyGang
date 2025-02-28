@@ -12,7 +12,8 @@ public class PlatformerMovement : MonoBehaviour
     public float rotationSpeed = 180f;    // Degrees per second
     public float maxVelocity = 17f;
     private Vector2 currentVelocity; 
-    public bool isDrift = false;     // Track current velocity
+    public bool isDrift = false;
+    public float DriftVelocity = 16f;     // Track current velocity
 
     void Start()
     {
@@ -35,7 +36,7 @@ public class PlatformerMovement : MonoBehaviour
         transform.Rotate(0, 0, rotationAmount);}
         if(isDrift == true){
         rotationSpeed = 130f;
-        maxVelocity = 16f;
+        maxVelocity = DriftVelocity;
         float rotationAmount = -horizontalInput * rotationSpeed * Time.deltaTime;
         transform.Rotate(0, 0, rotationAmount);
         
