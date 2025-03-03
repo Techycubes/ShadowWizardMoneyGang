@@ -5,42 +5,53 @@ using UnityEngine;
 // Ali Jawad Parpia
 public class PlatformerMovement : MonoBehaviour
 {
+    public string CarName = "Default";
     private Rigidbody2D rb;
-    public float moveSpeed = 20f;          // Target maximum speed
-    public float acceleration = 10f;      // How quickly speed builds up
-    public float deceleration = 8f;       // How quickly speed slows down
-    public float rotationSpeed = 180f;    // Degrees per second
-    public float maxVelocity = 17f;
+    public float moveSpeed;          // Target maximum speed
+    public float acceleration;      // How quickly speed builds up
+    public float deceleration;       // How quickly speed slows down
+    public float rotationSpeed;    // Degrees per second
+    public float maxVelocity;
     private Vector2 currentVelocity; 
-    public bool isDrift = false;
-    public float DriftVelocity = 16f;     // Track current velocity
+        // Track current velocity
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         currentVelocity = Vector2.zero;
+          if(CarName == "Default"){
+        moveSpeed = 13f;          // Target maximum speed
+        acceleration = 10f;      // How quickly speed builds up
+        deceleration = 8f;       // How quickly speed slows down
+        rotationSpeed = 180f;    // Degrees per second
+        maxVelocity = 17f;
+        }
+        if(CarName == "Car2"){
+        moveSpeed = 9f;          // Target maximum speed
+        acceleration = 9f;      // How quickly speed builds up
+        deceleration = 9f;       // How quickly speed slows down
+        rotationSpeed = 160f;    // Degrees per second
+        maxVelocity = 15f;
+        }
     }
 
     void Update()
     {
         // Get input
-        isDrift = Input.GetKey(KeyCode.Space);
         float horizontalInput = Input.GetAxis("Horizontal"); // A/D or Left/Right arrows
         float verticalInput = Input.GetAxis("Vertical");     // W/S or Up/Down arrows
 
         // Handle rotation
-        if(isDrift == false){
-            rotationSpeed = 180f;
-            maxVelocity = 17f;
-        float rotationAmount = -horizontalInput * rotationSpeed * Time.deltaTime;
-        transform.Rotate(0, 0, rotationAmount);}
-        if(isDrift == true){
-        rotationSpeed = 130f;
-        maxVelocity = DriftVelocity;
+        if(Input.GetKeyUp(KeyCode.Space)){
+            rotationSpeed += 50f;
+            maxVelocity += 1f;
+        }
+        if(Input.GetKeyDown(KeyCode.Space)){
+            rotationSpeed -= 50f;
+            maxVelocity -= 1f;
+        }
         float rotationAmount = -horizontalInput * rotationSpeed * Time.deltaTime;
         transform.Rotate(0, 0, rotationAmount);
-        
-        }
         
 
         // Calculate target velocity
