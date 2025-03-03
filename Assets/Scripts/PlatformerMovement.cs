@@ -11,7 +11,9 @@ public class PlatformerMovement : MonoBehaviour
     public float deceleration = 8f;       // How quickly speed slows down
     public float rotationSpeed = 180f;    // Degrees per second
     public float maxVelocity = 17f;
-    private Vector2 currentVelocity;      // Track current velocity
+    private Vector2 currentVelocity; 
+    public bool isDrift = false;
+    public float DriftVelocity = 16f;     // Track current velocity
 
     void Start()
     {
@@ -22,12 +24,24 @@ public class PlatformerMovement : MonoBehaviour
     void Update()
     {
         // Get input
+        isDrift = Input.GetKey(KeyCode.Space);
         float horizontalInput = Input.GetAxis("Horizontal"); // A/D or Left/Right arrows
         float verticalInput = Input.GetAxis("Vertical");     // W/S or Up/Down arrows
 
         // Handle rotation
+        if(isDrift == false){
+            rotationSpeed = 180f;
+            maxVelocity = 17f;
+        float rotationAmount = -horizontalInput * rotationSpeed * Time.deltaTime;
+        transform.Rotate(0, 0, rotationAmount);}
+        if(isDrift == true){
+        rotationSpeed = 130f;
+        maxVelocity = DriftVelocity;
         float rotationAmount = -horizontalInput * rotationSpeed * Time.deltaTime;
         transform.Rotate(0, 0, rotationAmount);
+        
+        }
+        
 
         // Calculate target velocity
         Vector2 forwardDirection = transform.up;
@@ -52,6 +66,7 @@ public class PlatformerMovement : MonoBehaviour
                 deceleration * Time.deltaTime
             );
         }
+        
 
         // Apply velocity to Rigidbody
         rb.velocity = currentVelocity;
