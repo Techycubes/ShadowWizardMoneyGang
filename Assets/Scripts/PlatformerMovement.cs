@@ -2,57 +2,61 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Ali Jawad Parpia
 public class PlatformerMovement : MonoBehaviour
 {
-    public string CarName = "Default";
+    public string carName = "Default"; // Local variable (no need to make it public unless Inspector needs it)
     private Rigidbody2D rb;
     public float moveSpeed;          // Target maximum speed
     public float acceleration;      // How quickly speed builds up
     public float deceleration;       // How quickly speed slows down
     public float rotationSpeed;    // Degrees per second
     public float maxVelocity;
-    private Vector2 currentVelocity; 
-        // Track current velocity
+    private Vector2 currentVelocity;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        carName = GameMenu.CarName; // Access the static CarName directly
         currentVelocity = Vector2.zero;
-          if(CarName == "Default"){
-        moveSpeed = 13f;          // Target maximum speed
-        acceleration = 10f;      // How quickly speed builds up
-        deceleration = 8f;       // How quickly speed slows down
-        rotationSpeed = 180f;    // Degrees per second
-        maxVelocity = 17f;
+
+        // Set stats based on carName
+        if (carName == "Default")
+        {
+            moveSpeed = 12f;
+            acceleration = 8f;
+            deceleration = 8f;
+            rotationSpeed = 180f;
+            maxVelocity = 17f;
         }
-        if(CarName == "Car2"){
-        moveSpeed = 9f;          // Target maximum speed
-        acceleration = 9f;      // How quickly speed builds up
-        deceleration = 9f;       // How quickly speed slows down
-        rotationSpeed = 160f;    // Degrees per second
-        maxVelocity = 15f;
+        else if (carName == "Car2")
+        {
+            moveSpeed = 10f;
+            acceleration = 9f;
+            deceleration = 10f;
+            rotationSpeed = 160f;
+            maxVelocity = 15f;
         }
     }
 
     void Update()
     {
         // Get input
-        float horizontalInput = Input.GetAxis("Horizontal"); // A/D or Left/Right arrows
-        float verticalInput = Input.GetAxis("Vertical");     // W/S or Up/Down arrows
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
 
         // Handle rotation
-        if(Input.GetKeyUp(KeyCode.Space)){
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
             rotationSpeed += 50f;
             maxVelocity += 1f;
         }
-        if(Input.GetKeyDown(KeyCode.Space)){
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
             rotationSpeed -= 50f;
             maxVelocity -= 1f;
         }
         float rotationAmount = -horizontalInput * rotationSpeed * Time.deltaTime;
         transform.Rotate(0, 0, rotationAmount);
-        
 
         // Calculate target velocity
         Vector2 forwardDirection = transform.up;
@@ -61,23 +65,12 @@ public class PlatformerMovement : MonoBehaviour
         // Apply acceleration/deceleration
         if (verticalInput != 0)
         {
-            // Accelerate towards target velocity
-            currentVelocity = Vector2.MoveTowards(
-                currentVelocity,
-                targetVelocity,
-                acceleration * Time.deltaTime
-            );
+            currentVelocity = Vector2.MoveTowards(currentVelocity, targetVelocity, acceleration * Time.deltaTime);
         }
         else
         {
-            // Decelerate when no input
-            currentVelocity = Vector2.MoveTowards(
-                currentVelocity,
-                Vector2.zero,
-                deceleration * Time.deltaTime
-            );
+            currentVelocity = Vector2.MoveTowards(currentVelocity, Vector2.zero, deceleration * Time.deltaTime);
         }
-        
 
         // Apply velocity to Rigidbody
         rb.velocity = currentVelocity;
@@ -89,46 +82,3 @@ public class PlatformerMovement : MonoBehaviour
         }
     }
 }
-/*
-old script
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-// Ali Jawad Parpia
-public class PlatformerMovement : MonoBehaviour
-{
-    private Rigidbody2D rb;
-    public float moveSpeed = 5f;
-    public float rotationSpeed = 180f; // Degrees per second
-    public float maxVelocity = 17f;
-
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
-    void Update()
-    {
-        // Get input
-        float horizontalInput = Input.GetAxis("Horizontal"); // A/D or Left/Right arrows
-        float verticalInput = Input.GetAxis("Vertical");     // W/S or Up/Down arrows
-
-        // Handle rotation
-        float rotationAmount = -horizontalInput * rotationSpeed * Time.deltaTime;
-        transform.Rotate(0, 0, rotationAmount);
-
-        // Calculate movement direction based on current rotation
-        Vector2 forwardDirection = transform.up; // In 2D, "up" is the forward direction for sprites
-        Vector2 movement = forwardDirection * verticalInput * moveSpeed;
-
-        // Apply velocity
-        rb.velocity = movement;
-
-        // Cap max velocity
-        if (rb.velocity.magnitude > maxVelocity)
-        {
-            rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
-        }
-    }
-}*/
