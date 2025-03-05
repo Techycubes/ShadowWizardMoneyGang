@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      empty-storehouse-warehouse-interior-factory_1441-3877_0: 7302249673049480921
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
