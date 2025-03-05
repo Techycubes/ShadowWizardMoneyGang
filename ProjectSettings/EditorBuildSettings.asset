@@ -6,22 +6,19 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Start.unity
-    guid: 5e01a365364b4f74d8a524be9621fb6a
-  - enabled: 1
     path: Assets/Scenes/Shop.unity
     guid: 0dbc3db178ed7f04cbced918cfd95aa1
   - enabled: 1
     path: Assets/Scenes/Selection.unity
     guid: eb17ec8849a539b43893fd9748d5ea5c
   - enabled: 1
-    path: Assets/Scenes/Game menu kaedijn.unity
-    guid: 96ed2d2413375f141b647aeb06ba40a0
-  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
     path: Assets/Scenes/Ali.unity
     guid: 83eb634684406864ab4dca2bf73b28bc
+  - enabled: 1
+    path: Assets/Scenes/Start.unity
+    guid: 96ed2d2413375f141b647aeb06ba40a0
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
