@@ -127,8 +127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e98e2c1f451fb19408b29e0e52ee4309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carName: Default
   moveSpeed: 10
   acceleration: 10
   deceleration: 8
   rotationSpeed: 180
-  maxVelocity: 20
+  maxVelocity: 10
