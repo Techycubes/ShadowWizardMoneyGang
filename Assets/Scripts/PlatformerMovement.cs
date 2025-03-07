@@ -16,7 +16,7 @@ public class PlatformerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        carName = GameMenu.CarName; // Access the static CarName directly
+        carName = Selectionmenu.CarName; // Access the static CarName directly
         currentVelocity = Vector2.zero;
 
         // Set stats based on carName

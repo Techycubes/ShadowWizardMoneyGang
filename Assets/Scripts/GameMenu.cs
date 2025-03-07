@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameMenu : MonoBehaviour
 {
-    public static string CarName = "default";
+    
 
     public void StartGame(string SceneName)
     {
@@ -13,7 +13,7 @@ public class GameMenu : MonoBehaviour
         Debug.Log("hi");
     }
 
-    public void Select(int i) // i could be ignored if toggling is the goal
+   /* public void Select(int i) // i could be ignored if toggling is the goal
     {
         if (CarName == "default")
         {
@@ -25,5 +25,5 @@ public class GameMenu : MonoBehaviour
             CarName = "default";
             Debug.Log("Selected default");
         }
-    }
+    }*/
 }
