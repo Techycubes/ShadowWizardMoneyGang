@@ -12,6 +12,7 @@ public class PlatformerMovement : MonoBehaviour
     public float rotationSpeed;    // Degrees per second
     public float maxVelocity;
     private Vector2 currentVelocity;
+        public Animator animator;
 
     void Start()
     {
