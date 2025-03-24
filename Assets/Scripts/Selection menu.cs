@@ -10,11 +10,11 @@ public class Selectionmenu : MonoBehaviour
     {
         if(i==0){
             CarName = "default";
-        }else if(i==1){
+        }else if(i==1 && Purchase.is2Purchase == true){
             CarName = "Car2";
-        } else if(i==2){
+        } else if(i==2 && Purchase.is3Purchase == true){
             CarName = "Car3";
-        }else{
+        }else {
             CarName = "default";
         }
     }
