@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class PlatformerMovement : MonoBehaviour
 {
+    public bool isChkpt1Touch;
+    public bool isChkpt2Touch;
+    public bool isChkpt3Touch;
+    public bool isChkpt4Touch;
+    public bool isChkpt5Touch;
+    public bool isChkpt6Touch;
+    public bool isChkpt7Touch;
+    public bool isChkpt8Touch;
     public string carName = "Default"; // Local variable (no need to make it public unless Inspector needs it)
     private Rigidbody2D rb;
     public float moveSpeed;          // Target maximum speed
@@ -81,5 +89,6 @@ public class PlatformerMovement : MonoBehaviour
         {
             rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
         }
+
     }
 }
