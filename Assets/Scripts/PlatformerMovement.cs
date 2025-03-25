@@ -100,15 +100,14 @@ public class PlatformerMovement : MonoBehaviour
 
         
     }
-    void OnTriggerEnter2D(Collision2D collision){
-        if (collision.gameObject.CompareTag("Chkpt1"))
-        {
-            isChkpt1Touch = true;
-        }
-        if(collision.gameObject.CompareTag("End") && isChkpt1Touch){
-            Debug.Log("hhh");
-            SceneManager.LoadScene("Results");
-                
-        }
+    void OnTriggerEnter2D(Collider2D collision) {
+    if (collision.gameObject.CompareTag("Chkpt1"))
+    {
+        isChkpt1Touch = true;
     }
-}
+    if (collision.gameObject.CompareTag("End") && isChkpt1Touch)
+    {
+        Debug.Log("a");
+        SceneManager.LoadScene("Results");
+    }
+}}
