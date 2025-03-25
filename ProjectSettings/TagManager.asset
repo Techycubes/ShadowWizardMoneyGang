@@ -6,6 +6,15 @@ TagManager:
   tags:
   - Grass
   - Testing object
+  - End
+  - Chkpt1
+  - Chkpt2
+  - Chkpt3
+  - Chkpt4
+  - Chkpt5
+  - Chkpt6
+  - Chkpt7
+  - Chkpt8
   layers:
   - Default
   - TransparentFX

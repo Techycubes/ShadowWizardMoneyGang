@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlatformerMovement : MonoBehaviour
 {
@@ -27,7 +28,14 @@ public class PlatformerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         carName = Selectionmenu.CarName; // Access the static CarName directly
         currentVelocity = Vector2.zero;
-
+        isChkpt1Touch = false;
+        isChkpt2Touch = false;
+        isChkpt3Touch = false;
+        isChkpt4Touch = false;
+        isChkpt5Touch = false;
+        isChkpt6Touch = false;
+        isChkpt7Touch = false;
+        isChkpt8Touch = false;
         // Set stats based on carName
         if (carName == "Default")
         {
@@ -90,5 +98,17 @@ public class PlatformerMovement : MonoBehaviour
             rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
         }
 
+        
+    }
+    void OnTriggerEnter2D(Collision2D collision){
+        if (collision.gameObject.CompareTag("Chkpt1"))
+        {
+            isChkpt1Touch = true;
+        }
+        if(collision.gameObject.CompareTag("End") && isChkpt1Touch){
+            Debug.Log("hhh");
+            SceneManager.LoadScene("Results");
+                
+        }
     }
 }
