@@ -52,6 +52,13 @@ public class PlatformerMovement : MonoBehaviour
             deceleration = 10f;
             rotationSpeed = 160f;
             maxVelocity = 15f;
+        }else if (carName == "Car3")
+        {
+            moveSpeed = 11f;
+            acceleration = 10f;
+            deceleration = 8f;
+            rotationSpeed = 170f;
+            maxVelocity = 15f;
         }
     }
 
