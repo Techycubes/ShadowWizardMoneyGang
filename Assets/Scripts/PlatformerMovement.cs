@@ -101,13 +101,45 @@ public class PlatformerMovement : MonoBehaviour
         
     }
     void OnTriggerEnter2D(Collider2D collision) {
-    if (collision.gameObject.CompareTag("Chkpt1"))
-    {
-        isChkpt1Touch = true;
+        
+        switch(collision.gameObject.tag){
+            case "Chkpt1":
+                isChkpt1Touch = true;
+                Debug.Log("c1t");
+                break;
+            case "Chkpt2":
+                isChkpt2Touch = true;
+                Debug.Log("c2t");
+                break;
+            case "Chkpt3":
+                isChkpt3Touch = true;
+                Debug.Log("c3t");
+                break;
+            case "Chkpt4":
+                isChkpt4Touch = true;
+                Debug.Log("c4t");
+                break;
+            case "Chkpt5":
+                isChkpt5Touch = true;
+                Debug.Log("c5t");
+                break;
+            case "Chkpt6":
+                isChkpt6Touch = true;
+                Debug.Log("c6t");
+                break;
+            case "Chkpt7":
+                isChkpt7Touch = true;
+                Debug.Log("c7t");
+                break;
+            case "Chkpt8":
+                isChkpt8Touch = true;
+                Debug.Log("c8t");
+                break;
+        }
+        if (collision.gameObject.CompareTag("End") && isChkpt1Touch && isChkpt2Touch && isChkpt3Touch && isChkpt4Touch && isChkpt5Touch && isChkpt6Touch && isChkpt7Touch && isChkpt8Touch)
+        {
+            Debug.Log("a");
+            SceneManager.LoadScene("Results");
+        }
     }
-    if (collision.gameObject.CompareTag("End") && isChkpt1Touch)
-    {
-        Debug.Log("a");
-        SceneManager.LoadScene("Results");
-    }
-}}
+}
