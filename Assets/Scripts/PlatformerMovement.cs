@@ -105,7 +105,16 @@ public class PlatformerMovement : MonoBehaviour
             rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
         }
 
+
         
+    }
+    void OnCollisionEnter2D(Collision2D collision){
+        switch(collision.gameObject.tag){
+            case "Ob1":
+                
+                Debug.Log("Ob1");
+                break;
+        }
     }
     void OnTriggerEnter2D(Collider2D collision) {
         
