@@ -23,7 +23,6 @@ public class PlatformerMovement : MonoBehaviour
     public bool Oiled;
     private Vector2 currentVelocity;
         public Animator animator;
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -171,12 +170,23 @@ public class PlatformerMovement : MonoBehaviour
             rotationSpeed -= 130;
             deceleration -= 2;
             Oiled = true;
+            StartCoroutine(OilEffectTimer());
         }
         if (collision.gameObject.CompareTag("End") && isChkpt1Touch && isChkpt2Touch && isChkpt3Touch && isChkpt4Touch && isChkpt5Touch && isChkpt6Touch && isChkpt7Touch && isChkpt8Touch)
         {
             Debug.Log("a");
             SceneManager.LoadScene("Results");
         }
+    }
+        private IEnumerator OilEffectTimer()
+    {
 
+        yield return new WaitForSeconds(5f); // Wait for 4 seconds
+        
+        // Reset values to original
+        rotationSpeed += 130;
+        deceleration += 2;
+        Oiled = false;
     }
 }
+
