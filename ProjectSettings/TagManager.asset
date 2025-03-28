@@ -6,14 +6,15 @@ TagManager:
   tags:
   - Grass
   - Testing object
-  - checkpoint 1
-  - checkpoint 2
-  - checkpoint 3
-  - checkpoint 4
-  - checkpoint 5
-  - checkpoint 6
-  - checkpoint 7
-  - checkpoint 8
+  - End
+  - Chkpt1
+  - Chkpt2
+  - Chkpt3
+  - Chkpt4
+  - Chkpt5
+  - Chkpt6
+  - Chkpt7
+  - Chkpt8
   layers:
   - Default
   - TransparentFX

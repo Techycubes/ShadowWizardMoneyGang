@@ -8,6 +8,14 @@ onBoardingDoNotAskAgain = true
 showPackageIndexes = false
 showStatusBar = false
 scopes = {
+	"last_search.8DF93128" = "h:t:SpriteRenderer #m_Sprite=none"
+	"OpenInspectorPreview.8DF93128" = "0"
+	"currentGroup.8DF93128" = null
+	"picker_window_position_offset.075BCD15" = "126;401;320;550"
+	"picker_visibility_flags.075BCD15" = "264"
+	"picker_item_size.075BCD15" = "96"
+	"picker_inspector.075BCD15" = "0"
+	"picker_current_group.075BCD15" = "all"
 }
 providers = {
 	find = {
