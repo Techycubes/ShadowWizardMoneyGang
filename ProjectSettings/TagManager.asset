@@ -15,6 +15,18 @@ TagManager:
   - Chkpt6
   - Chkpt7
   - Chkpt8
+  - checkpoint 7
+  - checkpoint 3
+  - checkpoint 8
+  - checkpoint 2
+  - checkpoint 1
+  - checkpoint 4
+  - checkpoint 5
+  - checkpoint 6
+  - Ob1
+  - Ob2
+  - Ob3
+  - Ob4
   layers:
   - Default
   - TransparentFX

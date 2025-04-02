@@ -1,0 +1,664 @@
+fileFormatVersion: 2
+guid: a7561cb7b0c928644b73c926b4fbe1e8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8476895147565484420
+    second: F1LeftBlue_0
+  - first:
+      213: 1931082316572887730
+    second: F1LeftBlue_1
+  - first:
+      213: 6498119429088122056
+    second: F1LeftBlue_2
+  - first:
+      213: 4266499469716041747
+    second: F1LeftBlue_3
+  - first:
+      213: -3398555858062190349
+    second: F1LeftBlue_4
+  - first:
+      213: -6777244203691426932
+    second: F1LeftBlue_5
+  - first:
+      213: -1421308142647284607
+    second: F1LeftBlue_6
+  - first:
+      213: 560431785942118351
+    second: F1LeftBlue_7
+  - first:
+      213: 9002520025412603355
+    second: F1LeftBlue_8
+  - first:
+      213: -7778473336623354391
+    second: F1LeftBlue_9
+  - first:
+      213: -8775443314701671861
+    second: F1LeftBlue_10
+  - first:
+      213: -7336379663167003771
+    second: F1LeftBlue_11
+  - first:
+      213: -1159789085685958216
+    second: F1LeftBlue_12
+  - first:
+      213: 8557776130860580491
+    second: F1LeftBlue_13
+  - first:
+      213: 2226681053819679049
+    second: F1LeftBlue_14
+  - first:
+      213: -857720542355908536
+    second: F1LeftBlue_15
+  - first:
+      213: 6704885491631242801
+    second: F1LeftBlue_16
+  - first:
+      213: 8021165237179605305
+    second: F1LeftBlue_17
+  - first:
+      213: 2752995269238056783
+    second: F1LeftBlue_18
+  - first:
+      213: 5377330320227693564
+    second: F1LeftBlue_19
+  - first:
+      213: -4447624268249845238
+    second: F1LeftBlue_20
+  - first:
+      213: 3547129116313319980
+    second: F1LeftBlue_21
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: F1LeftBlue_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 199
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4898fd4693bf3a570800000000000000
+      internalID: 8476895147565484420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1LeftBlue_1
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 199
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ba8d57b2259cca10800000000000000
+      internalID: 1931082316572887730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1LeftBlue_2
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 199
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c49cd63135fd2a50800000000000000
+      internalID: 6498119429088122056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1LeftBlue_3
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 199
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31031dea9a6a53b30800000000000000
+      internalID: 4266499469716041747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1LeftBlue_4
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 199
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f851e21477e5d0d0800000000000000
+      internalID: -3398555858062190349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1LeftBlue_5
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 199
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8bb5eadd4462f1a0800000000000000
+      internalID: -6777244203691426932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1LeftBlue_6
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 199
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18c632156cf764ce0800000000000000
+      internalID: -1421308142647284607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1LeftBlue_7
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 199
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcfeae17dbd07c700800000000000000
+      internalID: 560431785942118351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1LeftBlue_8
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 99
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdd0f0604406fec70800000000000000
+      internalID: 9002520025412603355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1LeftBlue_9
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 99
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9eda7b366bf4d0490800000000000000
+      internalID: -7778473336623354391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1LeftBlue_10
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 99
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4261a0bccc573680800000000000000
+      internalID: -8775443314701671861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1LeftBlue_11
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 99
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 583e78fe091ff2a90800000000000000
+      internalID: -7336379663167003771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1LeftBlue_12
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 99
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b9305da8f997efe0800000000000000
+      internalID: -1159789085685958216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1LeftBlue_13
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 99
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8ef24bcc0453c670800000000000000
+      internalID: 8557776130860580491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1LeftBlue_14
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 99
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 941b309fe92c6ee10800000000000000
+      internalID: 2226681053819679049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1LeftBlue_15
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 99
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 848125c06b3c814f0800000000000000
+      internalID: -857720542355908536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1LeftBlue_16
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 0
+        width: 30
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13eb954a4d98c0d50800000000000000
+      internalID: 6704885491631242801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1LeftBlue_17
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 0
+        width: 30
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9316dc60947e05f60800000000000000
+      internalID: 8021165237179605305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1LeftBlue_18
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 0
+        width: 30
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f47e3438c9a943620800000000000000
+      internalID: 2752995269238056783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1LeftBlue_19
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 0
+        width: 30
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf3fb199f6d10aa40800000000000000
+      internalID: 5377330320227693564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1LeftBlue_20
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 0
+        width: 30
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a02bf84ea4dd642c0800000000000000
+      internalID: -4447624268249845238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1LeftBlue_21
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 0
+        width: 30
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2afc46432fe93130800000000000000
+      internalID: 3547129116313319980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      F1LeftBlue_0: 8476895147565484420
+      F1LeftBlue_1: 1931082316572887730
+      F1LeftBlue_10: -8775443314701671861
+      F1LeftBlue_11: -7336379663167003771
+      F1LeftBlue_12: -1159789085685958216
+      F1LeftBlue_13: 8557776130860580491
+      F1LeftBlue_14: 2226681053819679049
+      F1LeftBlue_15: -857720542355908536
+      F1LeftBlue_16: 6704885491631242801
+      F1LeftBlue_17: 8021165237179605305
+      F1LeftBlue_18: 2752995269238056783
+      F1LeftBlue_19: 5377330320227693564
+      F1LeftBlue_2: 6498119429088122056
+      F1LeftBlue_20: -4447624268249845238
+      F1LeftBlue_21: 3547129116313319980
+      F1LeftBlue_3: 4266499469716041747
+      F1LeftBlue_4: -3398555858062190349
+      F1LeftBlue_5: -6777244203691426932
+      F1LeftBlue_6: -1421308142647284607
+      F1LeftBlue_7: 560431785942118351
+      F1LeftBlue_8: 9002520025412603355
+      F1LeftBlue_9: -7778473336623354391
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

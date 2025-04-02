@@ -20,14 +20,15 @@ public class PlatformerMovement : MonoBehaviour
     public float deceleration;       // How quickly speed slows down
     public float rotationSpeed;    // Degrees per second
     public float maxVelocity;
+    public bool Oiled;
     private Vector2 currentVelocity;
         public Animator animator;
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         carName = Selectionmenu.CarName; // Access the static CarName directly
         currentVelocity = Vector2.zero;
+        Oiled = false;
         isChkpt1Touch = false;
         isChkpt2Touch = false;
         isChkpt3Touch = false;
@@ -105,7 +106,29 @@ public class PlatformerMovement : MonoBehaviour
             rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
         }
 
+
         
+    }
+    void OnCollisionEnter2D(Collision2D collision){
+        switch(collision.gameObject.tag){
+            case "Ob1":
+                
+                Debug.Log("Ob1");
+                break;
+            case "Ob2":
+                
+                Debug.Log("Ob2");
+                break;
+            case "Ob3":
+                
+                Debug.Log("Ob3");
+                break;
+            case "Ob4":
+                
+                Debug.Log("Ob4");
+                break;
+            
+        }
     }
     void OnTriggerEnter2D(Collider2D collision) {
         
@@ -143,10 +166,27 @@ public class PlatformerMovement : MonoBehaviour
                 Debug.Log("c8t");
                 break;
         }
+        if(collision.gameObject.CompareTag("Ob4") && !Oiled){
+            rotationSpeed -= 130;
+            deceleration -= 2;
+            Oiled = true;
+            StartCoroutine(OilEffectTimer());
+        }
         if (collision.gameObject.CompareTag("End") && isChkpt1Touch && isChkpt2Touch && isChkpt3Touch && isChkpt4Touch && isChkpt5Touch && isChkpt6Touch && isChkpt7Touch && isChkpt8Touch)
         {
             Debug.Log("a");
             SceneManager.LoadScene("Results");
         }
     }
+        private IEnumerator OilEffectTimer()
+    {
+
+        yield return new WaitForSeconds(5f); // Wait for 4 seconds
+        
+        // Reset values to original
+        rotationSpeed += 130;
+        deceleration += 2;
+        Oiled = false;
+    }
 }
+
