@@ -25,6 +25,8 @@ public class PlatformerMovement : MonoBehaviour
   //      public Animator animator;
         private SpriteRenderer spriteRenderer;
         public Sprite newSprite;
+        public Sprite newSprite2;
+        public Sprite newSprite3;
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -43,6 +45,7 @@ public class PlatformerMovement : MonoBehaviour
         // Set stats based on carName
         if (carName == "Default")
         {
+            spriteRenderer.sprite = newSprite3;
             moveSpeed = 12f;
             acceleration = 8f;
             deceleration = 8f;
@@ -59,6 +62,7 @@ public class PlatformerMovement : MonoBehaviour
             maxVelocity = 15f;
         }else if (carName == "Car3")
         {
+            spriteRenderer.sprite = newSprite2;
             moveSpeed = 11f;
             acceleration = 10f;
             deceleration = 8f;
