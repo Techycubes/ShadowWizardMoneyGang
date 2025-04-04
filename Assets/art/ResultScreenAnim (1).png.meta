@@ -1,37 +1,37 @@
 fileFormatVersion: 2
-guid: 66144b1902174f745a0dcd8ec1c270de
+guid: 5f81f3ad5b050e94a82ce25761fc53fd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6515767696583629333
-    second: ResultScreenAnim_0
+      213: 6424879915368372768
+    second: ResultScreenAnim (1)_0
   - first:
-      213: 3161464615682607761
-    second: ResultScreenAnim_1
+      213: 3273605872899861994
+    second: ResultScreenAnim (1)_1
   - first:
-      213: 489140245731092282
-    second: ResultScreenAnim_2
+      213: 2402852122706386658
+    second: ResultScreenAnim (1)_2
   - first:
-      213: 1933012032954887975
-    second: ResultScreenAnim_3
+      213: 2834667727842790685
+    second: ResultScreenAnim (1)_3
   - first:
-      213: 2194881841343942492
-    second: ResultScreenAnim_4
+      213: -6098244475283220790
+    second: ResultScreenAnim (1)_4
   - first:
-      213: -778218710703280030
-    second: ResultScreenAnim_5
+      213: 8082692558653905336
+    second: ResultScreenAnim (1)_5
   - first:
-      213: 1042775145457893019
-    second: ResultScreenAnim_6
+      213: -7337283257974404682
+    second: ResultScreenAnim (1)_6
   - first:
-      213: 8336864657100214982
-    second: ResultScreenAnim_7
+      213: 683972282986540229
+    second: ResultScreenAnim (1)_7
   - first:
-      213: 6262616824488021624
-    second: ResultScreenAnim_8
+      213: 3861204203871554674
+    second: ResultScreenAnim (1)_8
   - first:
-      213: -4419176540728749661
-    second: ResultScreenAnim_9
+      213: -5819417607627086258
+    second: ResultScreenAnim (1)_9
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -127,13 +127,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ResultScreenAnim_0
+      name: ResultScreenAnim (1)_0
       rect:
         serializedVersion: 2
-        x: 143
-        y: 2487
-        width: 770
-        height: 714
+        x: 0
+        y: 4173
+        width: 1800
+        height: 1390
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,20 +141,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: be5ea2e4dc75395a0800000000000000
-      internalID: -6515767696583629333
+      spriteID: 02ad2181e32c92950800000000000000
+      internalID: 6424879915368372768
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ResultScreenAnim_1
+      name: ResultScreenAnim (1)_1
       rect:
         serializedVersion: 2
-        x: 1199
-        y: 2487
-        width: 770
-        height: 714
+        x: 1800
+        y: 4173
+        width: 1800
+        height: 1390
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,20 +162,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 19a8abb5157cfdb20800000000000000
-      internalID: 3161464615682607761
+      spriteID: aed24d4723f2e6d20800000000000000
+      internalID: 3273605872899861994
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ResultScreenAnim_2
+      name: ResultScreenAnim (1)_2
       rect:
         serializedVersion: 2
-        x: 2255
-        y: 2487
-        width: 770
-        height: 714
+        x: 3600
+        y: 4173
+        width: 1800
+        height: 1390
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,20 +183,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a3726204676c9c600800000000000000
-      internalID: 489140245731092282
+      spriteID: 2ee15b55645a85120800000000000000
+      internalID: 2402852122706386658
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ResultScreenAnim_3
+      name: ResultScreenAnim (1)_3
       rect:
         serializedVersion: 2
-        x: 143
-        y: 1671
-        width: 770
-        height: 714
+        x: 0
+        y: 2783
+        width: 1800
+        height: 1390
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,20 +204,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 72fe4d2d33073da10800000000000000
-      internalID: 1933012032954887975
+      spriteID: d1d455e9743c65720800000000000000
+      internalID: 2834667727842790685
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ResultScreenAnim_4
+      name: ResultScreenAnim (1)_4
       rect:
         serializedVersion: 2
-        x: 1199
-        y: 1671
-        width: 770
-        height: 714
+        x: 1800
+        y: 2783
+        width: 1800
+        height: 1390
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -225,20 +225,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c5fc24dd769c57e10800000000000000
-      internalID: 2194881841343942492
+      spriteID: ac65149a5feae5ba0800000000000000
+      internalID: -6098244475283220790
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ResultScreenAnim_5
+      name: ResultScreenAnim (1)_5
       rect:
         serializedVersion: 2
-        x: 2255
-        y: 1671
-        width: 770
-        height: 714
+        x: 3600
+        y: 2783
+        width: 1800
+        height: 1390
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -246,20 +246,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 260f7fea4363335f0800000000000000
-      internalID: -778218710703280030
+      spriteID: 8b95243ee0e7b2070800000000000000
+      internalID: 8082692558653905336
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ResultScreenAnim_6
+      name: ResultScreenAnim (1)_6
       rect:
         serializedVersion: 2
-        x: 143
-        y: 855
-        width: 770
-        height: 714
+        x: 0
+        y: 1393
+        width: 1800
+        height: 1390
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -267,20 +267,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b9ebf9d487ea87e00800000000000000
-      internalID: 1042775145457893019
+      spriteID: 6b9c30060cbbc2a90800000000000000
+      internalID: -7337283257974404682
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ResultScreenAnim_7
+      name: ResultScreenAnim (1)_7
       rect:
         serializedVersion: 2
-        x: 1199
-        y: 855
-        width: 770
-        height: 714
+        x: 1800
+        y: 1393
+        width: 1800
+        height: 1390
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -288,20 +288,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6c297fa2c3e72b370800000000000000
-      internalID: 8336864657100214982
+      spriteID: 5cc20a3ea25fd7900800000000000000
+      internalID: 683972282986540229
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ResultScreenAnim_8
+      name: ResultScreenAnim (1)_8
       rect:
         serializedVersion: 2
-        x: 2255
-        y: 855
-        width: 770
-        height: 714
+        x: 3600
+        y: 1393
+        width: 1800
+        height: 1390
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -309,20 +309,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 87e4ef332d849e650800000000000000
-      internalID: 6262616824488021624
+      spriteID: 27c420114c0c59530800000000000000
+      internalID: 3861204203871554674
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ResultScreenAnim_9
+      name: ResultScreenAnim (1)_9
       rect:
         serializedVersion: 2
-        x: 143
-        y: 39
-        width: 770
-        height: 714
+        x: 0
+        y: 3
+        width: 1800
+        height: 1390
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -330,8 +330,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3a19f1a995eeba2c0800000000000000
-      internalID: -4419176540728749661
+      spriteID: e46ebb9b4864d3fa0800000000000000
+      internalID: -5819417607627086258
       vertices: []
       indices: 
       edges: []
@@ -339,7 +339,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ec400f9a43dbc5e439cd40fdaef9d3a1
     internalID: 0
     vertices: []
     indices: 
@@ -347,16 +347,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ResultScreenAnim_0: -6515767696583629333
-      ResultScreenAnim_1: 3161464615682607761
-      ResultScreenAnim_2: 489140245731092282
-      ResultScreenAnim_3: 1933012032954887975
-      ResultScreenAnim_4: 2194881841343942492
-      ResultScreenAnim_5: -778218710703280030
-      ResultScreenAnim_6: 1042775145457893019
-      ResultScreenAnim_7: 8336864657100214982
-      ResultScreenAnim_8: 6262616824488021624
-      ResultScreenAnim_9: -4419176540728749661
+      ResultScreenAnim (1)_0: 6424879915368372768
+      ResultScreenAnim (1)_1: 3273605872899861994
+      ResultScreenAnim (1)_2: 2402852122706386658
+      ResultScreenAnim (1)_3: 2834667727842790685
+      ResultScreenAnim (1)_4: -6098244475283220790
+      ResultScreenAnim (1)_5: 8082692558653905336
+      ResultScreenAnim (1)_6: -7337283257974404682
+      ResultScreenAnim (1)_7: 683972282986540229
+      ResultScreenAnim (1)_8: 3861204203871554674
+      ResultScreenAnim (1)_9: -5819417607627086258
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,0 +1,664 @@
+fileFormatVersion: 2
+guid: d4971bd2ee96720449b5c6a3aadd0c41
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4973083914349784433
+    second: F1TrailGreen_0
+  - first:
+      213: 2959979135845152866
+    second: F1TrailGreen_1
+  - first:
+      213: 4542507526781319175
+    second: F1TrailGreen_2
+  - first:
+      213: 7712309702011650093
+    second: F1TrailGreen_3
+  - first:
+      213: -6531054996214114355
+    second: F1TrailGreen_4
+  - first:
+      213: 777911388819817716
+    second: F1TrailGreen_5
+  - first:
+      213: 3202710079166894478
+    second: F1TrailGreen_6
+  - first:
+      213: 3976501802572598988
+    second: F1TrailGreen_7
+  - first:
+      213: -6199002629755843391
+    second: F1TrailGreen_8
+  - first:
+      213: -7842175081529749296
+    second: F1TrailGreen_9
+  - first:
+      213: -3627733857963825559
+    second: F1TrailGreen_10
+  - first:
+      213: -271944489904682795
+    second: F1TrailGreen_11
+  - first:
+      213: 292376478942345443
+    second: F1TrailGreen_12
+  - first:
+      213: 8363945994254877248
+    second: F1TrailGreen_13
+  - first:
+      213: -3597940285685351643
+    second: F1TrailGreen_14
+  - first:
+      213: -8085092066293698267
+    second: F1TrailGreen_15
+  - first:
+      213: -7760982565173373621
+    second: F1TrailGreen_16
+  - first:
+      213: -7118944463701525881
+    second: F1TrailGreen_17
+  - first:
+      213: -1563094513028848467
+    second: F1TrailGreen_18
+  - first:
+      213: 2732024047566922181
+    second: F1TrailGreen_19
+  - first:
+      213: 1768617057356007955
+    second: F1TrailGreen_20
+  - first:
+      213: -7500737228007556496
+    second: F1TrailGreen_21
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: F1TrailGreen_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 199
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17d2709b871f30540800000000000000
+      internalID: 4973083914349784433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1TrailGreen_1
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 199
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2683e966755f31920800000000000000
+      internalID: 2959979135845152866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1TrailGreen_2
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 199
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 708b653478a3a0f30800000000000000
+      internalID: 4542507526781319175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1TrailGreen_3
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 199
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d20043affc0a70b60800000000000000
+      internalID: 7712309702011650093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1TrailGreen_4
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 199
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc71e1e75180d55a0800000000000000
+      internalID: -6531054996214114355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1TrailGreen_5
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 199
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f4065d5942bbca00800000000000000
+      internalID: 777911388819817716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1TrailGreen_6
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 199
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e815e4b29df427c20800000000000000
+      internalID: 3202710079166894478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1TrailGreen_7
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 199
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cce4a0f225f5f2730800000000000000
+      internalID: 3976501802572598988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1TrailGreen_8
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 99
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ccc0b3b3f7b8f9a0800000000000000
+      internalID: -6199002629755843391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1TrailGreen_9
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 99
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d0dffe105ffa2390800000000000000
+      internalID: -7842175081529749296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1TrailGreen_10
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 99
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 966a868d643b7adc0800000000000000
+      internalID: -3627733857963825559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1TrailGreen_11
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 99
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d84b906debd93cf0800000000000000
+      internalID: -271944489904682795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1TrailGreen_12
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 99
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e8b908cbdabe0400800000000000000
+      internalID: 292376478942345443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1TrailGreen_13
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 99
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0420d145194b21470800000000000000
+      internalID: 8363945994254877248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1TrailGreen_14
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 99
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52b38a47f5c811ec0800000000000000
+      internalID: -3597940285685351643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1TrailGreen_15
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 99
+        width: 30
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5213c343a9bfbcf80800000000000000
+      internalID: -8085092066293698267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1TrailGreen_16
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 0
+        width: 30
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4557d6f9737b4490800000000000000
+      internalID: -7760982565173373621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1TrailGreen_17
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 0
+        width: 30
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78a36516abd643d90800000000000000
+      internalID: -7118944463701525881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1TrailGreen_18
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 0
+        width: 30
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da4ad8072d5ce4ae0800000000000000
+      internalID: -1563094513028848467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1TrailGreen_19
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 0
+        width: 30
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c12d0975691ae520800000000000000
+      internalID: 2732024047566922181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1TrailGreen_20
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 0
+        width: 30
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31ac667d7d36b8810800000000000000
+      internalID: 1768617057356007955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: F1TrailGreen_21
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 0
+        width: 30
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07abf035b3708e790800000000000000
+      internalID: -7500737228007556496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      F1TrailGreen_0: 4973083914349784433
+      F1TrailGreen_1: 2959979135845152866
+      F1TrailGreen_10: -3627733857963825559
+      F1TrailGreen_11: -271944489904682795
+      F1TrailGreen_12: 292376478942345443
+      F1TrailGreen_13: 8363945994254877248
+      F1TrailGreen_14: -3597940285685351643
+      F1TrailGreen_15: -8085092066293698267
+      F1TrailGreen_16: -7760982565173373621
+      F1TrailGreen_17: -7118944463701525881
+      F1TrailGreen_18: -1563094513028848467
+      F1TrailGreen_19: 2732024047566922181
+      F1TrailGreen_2: 4542507526781319175
+      F1TrailGreen_20: 1768617057356007955
+      F1TrailGreen_21: -7500737228007556496
+      F1TrailGreen_3: 7712309702011650093
+      F1TrailGreen_4: -6531054996214114355
+      F1TrailGreen_5: 777911388819817716
+      F1TrailGreen_6: 3202710079166894478
+      F1TrailGreen_7: 3976501802572598988
+      F1TrailGreen_8: -6199002629755843391
+      F1TrailGreen_9: -7842175081529749296
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
