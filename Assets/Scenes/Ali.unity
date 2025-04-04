@@ -5018,6 +5018,14 @@ PrefabInstance:
       propertyPath: newSprite
       value: 
       objectReference: {fileID: 585383625704454523, guid: 4227ed07dceb3064e8bee014579bf30e, type: 3}
+    - target: {fileID: 6032805896405191320, guid: 078205acf68187c4f90d224d4298b25d, type: 3}
+      propertyPath: newSprite2
+      value: 
+      objectReference: {fileID: 232942018, guid: 521536aa2d1b81749bfbd5a9e7d542bb, type: 3}
+    - target: {fileID: 6032805896405191320, guid: 078205acf68187c4f90d224d4298b25d, type: 3}
+      propertyPath: newSprite3
+      value: 
+      objectReference: {fileID: 232942018, guid: 521536aa2d1b81749bfbd5a9e7d542bb, type: 3}
     - target: {fileID: 8967131376237411303, guid: 078205acf68187c4f90d224d4298b25d, type: 3}
       propertyPath: m_Name
       value: Player car
