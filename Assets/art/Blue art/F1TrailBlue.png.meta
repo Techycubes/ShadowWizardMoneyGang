@@ -1,73 +1,73 @@
 fileFormatVersion: 2
-guid: ba9e932b694b3f842becf691993db009
+guid: 4227ed07dceb3064e8bee014579bf30e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6888756438569675735
-    second: New Piskel (1)_0
+      213: 585383625704454523
+    second: F1TrailBlue_0
   - first:
-      213: 9173839873224666002
-    second: New Piskel (1)_1
+      213: 275489399239417481
+    second: F1TrailBlue_1
   - first:
-      213: -745645855993587873
-    second: New Piskel (1)_2
+      213: -6984974789088648573
+    second: F1TrailBlue_2
   - first:
-      213: 4123733795721074919
-    second: New Piskel (1)_3
+      213: 4804497158341084873
+    second: F1TrailBlue_3
   - first:
-      213: -1753449832276896209
-    second: New Piskel (1)_4
+      213: 3499911248079610905
+    second: F1TrailBlue_4
   - first:
-      213: 3188600494121364513
-    second: New Piskel (1)_5
+      213: -4915084297401886922
+    second: F1TrailBlue_5
   - first:
-      213: 393433629526434239
-    second: New Piskel (1)_6
+      213: 2513424989954617170
+    second: F1TrailBlue_6
   - first:
-      213: -6999936710424723473
-    second: New Piskel (1)_7
+      213: 244563966801831008
+    second: F1TrailBlue_7
   - first:
-      213: 5940041773153359950
-    second: New Piskel (1)_8
+      213: 749861257563573890
+    second: F1TrailBlue_8
   - first:
-      213: 7506680604602429903
-    second: New Piskel (1)_9
+      213: 4818863452620578933
+    second: F1TrailBlue_9
   - first:
-      213: -8695545766370844827
-    second: New Piskel (1)_10
+      213: 2828954146096096938
+    second: F1TrailBlue_10
   - first:
-      213: 7137586956756217966
-    second: New Piskel (1)_11
+      213: -3214185306741356996
+    second: F1TrailBlue_11
   - first:
-      213: -1545029242027367301
-    second: New Piskel (1)_12
+      213: -8467126096347125377
+    second: F1TrailBlue_12
   - first:
-      213: 8101533981685690433
-    second: New Piskel (1)_13
+      213: 5952535408815656543
+    second: F1TrailBlue_13
   - first:
-      213: 4801293961129559398
-    second: New Piskel (1)_14
+      213: -2004266598564884151
+    second: F1TrailBlue_14
   - first:
-      213: -6430870321733951535
-    second: New Piskel (1)_15
+      213: -4280416757868768005
+    second: F1TrailBlue_15
   - first:
-      213: 3573209282882095603
-    second: New Piskel (1)_16
+      213: 2029065058166539043
+    second: F1TrailBlue_16
   - first:
-      213: -5327827185363330059
-    second: New Piskel (1)_17
+      213: -3220576961911244533
+    second: F1TrailBlue_17
   - first:
-      213: -4224503851982913176
-    second: New Piskel (1)_18
+      213: 5732490437942324873
+    second: F1TrailBlue_18
   - first:
-      213: -7014553719434779897
-    second: New Piskel (1)_19
+      213: 1189683236278489567
+    second: F1TrailBlue_19
   - first:
-      213: 5949592847331480888
-    second: New Piskel (1)_20
+      213: 7569565322534902420
+    second: F1TrailBlue_20
   - first:
-      213: 4170087483869172866
-    second: New Piskel (1)_21
+      213: 1401703649516151306
+    second: F1TrailBlue_21
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -163,13 +163,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: New Piskel (1)_0
+      name: F1TrailBlue_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 240
-        width: 26
-        height: 57
+        x: 1
+        y: 199
+        width: 30
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,20 +177,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9249ede64883660a0800000000000000
-      internalID: -6888756438569675735
+      spriteID: b79b17b5e43bf1800800000000000000
+      internalID: 585383625704454523
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (1)_1
+      name: F1TrailBlue_1
       rect:
         serializedVersion: 2
-        x: 35
-        y: 240
-        width: 26
-        height: 57
+        x: 33
+        y: 199
+        width: 30
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -198,20 +198,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 29beed572c6005f70800000000000000
-      internalID: 9173839873224666002
+      spriteID: 98e1d05262cb2d300800000000000000
+      internalID: 275489399239417481
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (1)_2
+      name: F1TrailBlue_2
       rect:
         serializedVersion: 2
-        x: 67
-        y: 240
-        width: 26
-        height: 57
+        x: 65
+        y: 199
+        width: 30
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -219,20 +219,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f5792496b0fe6a5f0800000000000000
-      internalID: -745645855993587873
+      spriteID: 382ef43ff62601f90800000000000000
+      internalID: -6984974789088648573
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (1)_3
+      name: F1TrailBlue_3
       rect:
         serializedVersion: 2
-        x: 99
-        y: 240
-        width: 26
-        height: 57
+        x: 97
+        y: 199
+        width: 30
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -240,20 +240,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7e85a3ae9027a3930800000000000000
-      internalID: 4123733795721074919
+      spriteID: 9c64b4fc5b00da240800000000000000
+      internalID: 4804497158341084873
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (1)_4
+      name: F1TrailBlue_4
       rect:
         serializedVersion: 2
-        x: 131
-        y: 240
-        width: 26
-        height: 57
+        x: 129
+        y: 199
+        width: 30
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -261,20 +261,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f26daafeaae7aa7e0800000000000000
-      internalID: -1753449832276896209
+      spriteID: 914ed2f9cbe229030800000000000000
+      internalID: 3499911248079610905
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (1)_5
+      name: F1TrailBlue_5
       rect:
         serializedVersion: 2
-        x: 163
-        y: 240
-        width: 26
-        height: 57
+        x: 161
+        y: 199
+        width: 30
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -282,20 +282,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 12c2db6614f204c20800000000000000
-      internalID: 3188600494121364513
+      spriteID: 637924c6fdc1acbb0800000000000000
+      internalID: -4915084297401886922
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (1)_6
+      name: F1TrailBlue_6
       rect:
         serializedVersion: 2
-        x: 195
-        y: 240
-        width: 26
-        height: 57
+        x: 193
+        y: 199
+        width: 30
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -303,20 +303,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fb1ad923dc1c57500800000000000000
-      internalID: 393433629526434239
+      spriteID: 25fa5df26ba71e220800000000000000
+      internalID: 2513424989954617170
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (1)_7
+      name: F1TrailBlue_7
       rect:
         serializedVersion: 2
-        x: 227
-        y: 240
-        width: 26
-        height: 57
+        x: 225
+        y: 199
+        width: 30
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -324,20 +324,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: feffaec26aa3bde90800000000000000
-      internalID: -6999936710424723473
+      spriteID: 064651ec1add46300800000000000000
+      internalID: 244563966801831008
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (1)_8
+      name: F1TrailBlue_8
       rect:
         serializedVersion: 2
-        x: 3
-        y: 140
-        width: 26
-        height: 57
+        x: 1
+        y: 99
+        width: 30
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -345,20 +345,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e4899cf55844f6250800000000000000
-      internalID: 5940041773153359950
+      spriteID: 28e87ef37da086a00800000000000000
+      internalID: 749861257563573890
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (1)_9
+      name: F1TrailBlue_9
       rect:
         serializedVersion: 2
-        x: 35
-        y: 140
-        width: 26
-        height: 57
+        x: 33
+        y: 99
+        width: 30
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -366,20 +366,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fc174afdc361d2860800000000000000
-      internalID: 7506680604602429903
+      spriteID: 570ef8a57ca00e240800000000000000
+      internalID: 4818863452620578933
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (1)_10
+      name: F1TrailBlue_10
       rect:
         serializedVersion: 2
-        x: 67
-        y: 140
-        width: 26
-        height: 57
+        x: 65
+        y: 99
+        width: 30
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -387,20 +387,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 56f505b4237335780800000000000000
-      internalID: -8695545766370844827
+      spriteID: aa62de3bec6724720800000000000000
+      internalID: 2828954146096096938
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (1)_11
+      name: F1TrailBlue_11
       rect:
         serializedVersion: 2
-        x: 99
-        y: 140
-        width: 26
-        height: 57
+        x: 97
+        y: 99
+        width: 30
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -408,20 +408,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e607ae6458dcd0360800000000000000
-      internalID: 7137586956756217966
+      spriteID: c36c6653e7be463d0800000000000000
+      internalID: -3214185306741356996
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (1)_12
+      name: F1TrailBlue_12
       rect:
         serializedVersion: 2
-        x: 131
-        y: 140
-        width: 26
-        height: 57
+        x: 129
+        y: 99
+        width: 30
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -429,20 +429,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b742e5d1714fe8ae0800000000000000
-      internalID: -1545029242027367301
+      spriteID: f792ac61da9be7a80800000000000000
+      internalID: -8467126096347125377
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (1)_13
+      name: F1TrailBlue_13
       rect:
         serializedVersion: 2
-        x: 163
-        y: 140
-        width: 26
-        height: 57
+        x: 161
+        y: 99
+        width: 30
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -450,20 +450,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 140b12a8b3e6e6070800000000000000
-      internalID: 8101533981685690433
+      spriteID: f5e446b9a67ab9250800000000000000
+      internalID: 5952535408815656543
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (1)_14
+      name: F1TrailBlue_14
       rect:
         serializedVersion: 2
-        x: 195
-        y: 140
-        width: 26
-        height: 57
+        x: 193
+        y: 99
+        width: 30
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -471,20 +471,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6650b575b6f91a240800000000000000
-      internalID: 4801293961129559398
+      spriteID: 9411c5dc52a6f24e0800000000000000
+      internalID: -2004266598564884151
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (1)_15
+      name: F1TrailBlue_15
       rect:
         serializedVersion: 2
-        x: 227
-        y: 140
-        width: 26
-        height: 57
+        x: 225
+        y: 99
+        width: 30
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -492,20 +492,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1df127cb385f0c6a0800000000000000
-      internalID: -6430870321733951535
+      spriteID: bf45a9823a7e894c0800000000000000
+      internalID: -4280416757868768005
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (1)_16
+      name: F1TrailBlue_16
       rect:
         serializedVersion: 2
-        x: 3
-        y: 40
-        width: 26
-        height: 57
+        x: 1
+        y: 0
+        width: 30
+        height: 97
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -513,20 +513,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3f9c05e39e6969130800000000000000
-      internalID: 3573209282882095603
+      spriteID: 3238c228befa82c10800000000000000
+      internalID: 2029065058166539043
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (1)_17
+      name: F1TrailBlue_17
       rect:
         serializedVersion: 2
-        x: 35
-        y: 40
-        width: 26
-        height: 57
+        x: 33
+        y: 0
+        width: 30
+        height: 97
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -534,20 +534,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5fbdfb72761cf06b0800000000000000
-      internalID: -5327827185363330059
+      spriteID: b09397501563e43d0800000000000000
+      internalID: -3220576961911244533
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (1)_18
+      name: F1TrailBlue_18
       rect:
         serializedVersion: 2
-        x: 67
-        y: 40
-        width: 26
-        height: 57
+        x: 65
+        y: 0
+        width: 30
+        height: 97
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -555,20 +555,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8610a46012c8f55c0800000000000000
-      internalID: -4224503851982913176
+      spriteID: 98e20e76ea5ed8f40800000000000000
+      internalID: 5732490437942324873
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (1)_19
+      name: F1TrailBlue_19
       rect:
         serializedVersion: 2
-        x: 99
-        y: 40
-        width: 26
-        height: 57
+        x: 97
+        y: 0
+        width: 30
+        height: 97
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -576,20 +576,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 703e13f8e8c47ae90800000000000000
-      internalID: -7014553719434779897
+      spriteID: fd1dd95a99a928010800000000000000
+      internalID: 1189683236278489567
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (1)_20
+      name: F1TrailBlue_20
       rect:
         serializedVersion: 2
-        x: 131
-        y: 40
-        width: 26
-        height: 57
+        x: 129
+        y: 0
+        width: 30
+        height: 97
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -597,20 +597,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 835d56f1c23319250800000000000000
-      internalID: 5949592847331480888
+      spriteID: 49adec93e8f7c0960800000000000000
+      internalID: 7569565322534902420
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (1)_21
+      name: F1TrailBlue_21
       rect:
         serializedVersion: 2
-        x: 163
-        y: 40
-        width: 26
-        height: 57
+        x: 161
+        y: 0
+        width: 30
+        height: 97
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -618,8 +618,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2841356f8702fd930800000000000000
-      internalID: 4170087483869172866
+      spriteID: a0267cdea0ad37310800000000000000
+      internalID: 1401703649516151306
       vertices: []
       indices: 
       edges: []
@@ -635,28 +635,28 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      New Piskel (1)_0: -6888756438569675735
-      New Piskel (1)_1: 9173839873224666002
-      New Piskel (1)_10: -8695545766370844827
-      New Piskel (1)_11: 7137586956756217966
-      New Piskel (1)_12: -1545029242027367301
-      New Piskel (1)_13: 8101533981685690433
-      New Piskel (1)_14: 4801293961129559398
-      New Piskel (1)_15: -6430870321733951535
-      New Piskel (1)_16: 3573209282882095603
-      New Piskel (1)_17: -5327827185363330059
-      New Piskel (1)_18: -4224503851982913176
-      New Piskel (1)_19: -7014553719434779897
-      New Piskel (1)_2: -745645855993587873
-      New Piskel (1)_20: 5949592847331480888
-      New Piskel (1)_21: 4170087483869172866
-      New Piskel (1)_3: 4123733795721074919
-      New Piskel (1)_4: -1753449832276896209
-      New Piskel (1)_5: 3188600494121364513
-      New Piskel (1)_6: 393433629526434239
-      New Piskel (1)_7: -6999936710424723473
-      New Piskel (1)_8: 5940041773153359950
-      New Piskel (1)_9: 7506680604602429903
+      F1TrailBlue_0: 585383625704454523
+      F1TrailBlue_1: 275489399239417481
+      F1TrailBlue_10: 2828954146096096938
+      F1TrailBlue_11: -3214185306741356996
+      F1TrailBlue_12: -8467126096347125377
+      F1TrailBlue_13: 5952535408815656543
+      F1TrailBlue_14: -2004266598564884151
+      F1TrailBlue_15: -4280416757868768005
+      F1TrailBlue_16: 2029065058166539043
+      F1TrailBlue_17: -3220576961911244533
+      F1TrailBlue_18: 5732490437942324873
+      F1TrailBlue_19: 1189683236278489567
+      F1TrailBlue_2: -6984974789088648573
+      F1TrailBlue_20: 7569565322534902420
+      F1TrailBlue_21: 1401703649516151306
+      F1TrailBlue_3: 4804497158341084873
+      F1TrailBlue_4: 3499911248079610905
+      F1TrailBlue_5: -4915084297401886922
+      F1TrailBlue_6: 2513424989954617170
+      F1TrailBlue_7: 244563966801831008
+      F1TrailBlue_8: 749861257563573890
+      F1TrailBlue_9: 4818863452620578933
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
