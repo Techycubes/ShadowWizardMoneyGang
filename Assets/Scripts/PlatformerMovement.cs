@@ -22,9 +22,12 @@ public class PlatformerMovement : MonoBehaviour
     public float maxVelocity;
     public bool Oiled;
     private Vector2 currentVelocity;
-        public Animator animator;
+  //      public Animator animator;
+        private SpriteRenderer spriteRenderer;
+        public Sprite newSprite;
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         carName = Selectionmenu.CarName; // Access the static CarName directly
         currentVelocity = Vector2.zero;
@@ -48,6 +51,7 @@ public class PlatformerMovement : MonoBehaviour
         }
         else if (carName == "Car2")
         {
+            spriteRenderer.sprite = newSprite;
             moveSpeed = 10f;
             acceleration = 9f;
             deceleration = 10f;
@@ -80,8 +84,12 @@ public class PlatformerMovement : MonoBehaviour
             rotationSpeed -= 50f;
             maxVelocity -= 1f;
         }
-        float rotationAmount = -horizontalInput * rotationSpeed * Time.deltaTime;
-        transform.Rotate(0, 0, rotationAmount);
+        if(rotationSpeed >= 0){
+            float rotationAmount = -horizontalInput * rotationSpeed * Time.deltaTime;
+            transform.Rotate(0, 0, rotationAmount);
+        }else if (rotationSpeed < 0){
+            float rotationSpeed = 0;
+        }
 
         // Calculate target velocity
         Vector2 forwardDirection = transform.up;
