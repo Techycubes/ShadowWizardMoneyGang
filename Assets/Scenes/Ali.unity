@@ -16435,6 +16435,8 @@ GameObject:
   - component: {fileID: 4849704372403264287}
   - component: {fileID: 4442725733317359213}
   - component: {fileID: 7116137186620561641}
+  - component: {fileID: 9022008849290202627}
+  - component: {fileID: 9022008849290202626}
   m_Layer: 0
   m_Name: Player car (1)
   m_TagString: Player
@@ -16774,6 +16776,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &9022008849290202626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3439907187203139204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd12c4461508ba143a0d98a6dec5a290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9022008849290202627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3439907187203139204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c3f6494bfa12024f87c06f5f3c8f46a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
