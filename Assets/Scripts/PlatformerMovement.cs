@@ -73,6 +73,7 @@ public class PlatformerMovement : MonoBehaviour
 
     void Update()
     {
+        if(DissapearObject.CanStart){
         // Get input
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
@@ -119,7 +120,7 @@ public class PlatformerMovement : MonoBehaviour
         }
 
 
-        
+      }  
     }
     void OnCollisionEnter2D(Collision2D collision){
         switch(collision.gameObject.tag){
