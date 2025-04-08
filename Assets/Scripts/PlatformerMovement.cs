@@ -27,6 +27,8 @@ public class PlatformerMovement : MonoBehaviour
     public Sprite newSprite2;
     public Sprite newSprite3;
     public bool IsSpunOut;
+    float horizontalInput;
+    float verticalInput;
     void Start()
     {
         IsSpunOut = false;
@@ -76,8 +78,8 @@ public class PlatformerMovement : MonoBehaviour
     {
         if(DissapearObject.CanStart && !IsSpunOut){
         // Get input
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
 
         // Handle rotation
         if (Input.GetKeyUp(KeyCode.Space))
@@ -121,7 +123,10 @@ public class PlatformerMovement : MonoBehaviour
         }
 
 
-      }  
+      }else if(IsSpunOut){
+        horizontalInput = 0f;
+        verticalInput = 0f;
+      }
     }
     void OnCollisionEnter2D(Collision2D collision){
     switch(collision.gameObject.tag)
@@ -186,7 +191,7 @@ public class PlatformerMovement : MonoBehaviour
                 Debug.Log("c8t");
                 break;
         }
-        if(collision.gameObject.CompareTag("Ob4") && !Oiled){
+        if(collision.gameObject.CompareTag("Ob4") && !Oiled && rotationSpeed>130){
             rotationSpeed -= 130;
             deceleration -= 2;
             Oiled = true;
@@ -208,26 +213,54 @@ public class PlatformerMovement : MonoBehaviour
         deceleration += 2;
         Oiled = false;
     }
-    private IEnumerator SpinOutEffect()
+private IEnumerator SpinOutEffect()
+{
+    currentVelocity = Vector2.zero;
+        horizontalInput = 0f;
+    verticalInput = 0f;
+    IsSpunOut = true;
+    
+    // Store original values
+    float originalMoveSpeed = moveSpeed;
+    float originalRotationSpeed = rotationSpeed;
+    
+    // Disable physics movement completely
+    rb.velocity = Vector2.zero;
+    rb.angularVelocity = 0f;
+    
+    // Stop movement and set spinning
+    moveSpeed = 0f;
+    rotationSpeed = 360f;
+    
+    // Calculate backward movement
+    Vector2 backwardDirection = -transform.up;
+    float backwardDistance = 1f; // How far to move back (adjust as needed)
+    Vector2 startPosition = transform.position;
+    Vector2 targetPosition = startPosition + (backwardDirection * backwardDistance);
+    float backwardDuration = 0.5f; // Time for backward movement
+    
+    // Move backward smoothly
+    float elapsedTime = 0f;
+    while (elapsedTime < backwardDuration)
     {
-        IsSpunOut = true;
-        // Store original values
-        float originalMoveSpeed = moveSpeed;
-        float originalRotationSpeed = rotationSpeed;
-        
-        // Stop movement and increase rotation
-        moveSpeed = 0f;
-        rotationSpeed = 360f; // Fast spinning
-        Vector2 backwardDirection = -transform.up; // Opposite of car's forward direction
-        float backwardForce = 2f; // Adjust this value to control how far it moves back
-        rb.velocity = Vector2.zero; // Reset current velocity first
-        rb.AddForce(backwardDirection * backwardForce, ForceMode2D.Impulse);
-        yield return new WaitForSeconds(1f); // Wait for 3 seconds
-        
-        // Restore original values
-        IsSpunOut = false;
-        moveSpeed = originalMoveSpeed;
-        rotationSpeed = originalRotationSpeed;
+        elapsedTime += Time.deltaTime;
+        float t = elapsedTime / backwardDuration;
+        transform.position = Vector2.Lerp(startPosition, targetPosition, t);
+        yield return null;
     }
+    transform.position = targetPosition; // Ensure exact final position
+    
+    // Spin in place for remaining time
+    yield return new WaitForSeconds(0.5f); // Total 3s with 0.5s backward movement
+    
+    // Restore original state
+    IsSpunOut = false;
+    moveSpeed = originalMoveSpeed;
+    rotationSpeed = originalRotationSpeed;
+    rb.velocity = Vector2.zero; // Ensure no residual velocity
+    rb.angularVelocity = 0f;
+    horizontalInput = 0f;
+    verticalInput = 0f;
+}
 }
 
