@@ -22,13 +22,14 @@ public class PlatformerMovement : MonoBehaviour
     public float maxVelocity;
     public bool Oiled;
     private Vector2 currentVelocity;
-  //      public Animator animator;
-        private SpriteRenderer spriteRenderer;
-        public Sprite newSprite;
-        public Sprite newSprite2;
-        public Sprite newSprite3;
+  //public Animator animator;
+    private SpriteRenderer spriteRenderer;        public Sprite newSprite;
+    public Sprite newSprite2;
+    public Sprite newSprite3;
+    public bool IsSpunOut;
     void Start()
     {
+        IsSpunOut = false;
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         carName = Selectionmenu.CarName; // Access the static CarName directly
@@ -73,7 +74,7 @@ public class PlatformerMovement : MonoBehaviour
 
     void Update()
     {
-        if(DissapearObject.CanStart){
+        if(DissapearObject.CanStart && !IsSpunOut){
         // Get input
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
@@ -123,24 +124,30 @@ public class PlatformerMovement : MonoBehaviour
       }  
     }
     void OnCollisionEnter2D(Collision2D collision){
-        switch(collision.gameObject.tag){
+    switch(collision.gameObject.tag)
+        {
             case "Ob1":
-                
                 Debug.Log("Ob1");
+                if (!IsSpunOut){
+                    StartCoroutine(SpinOutEffect());
+                }
                 break;
             case "Ob2":
-                
                 Debug.Log("Ob2");
+                if (!IsSpunOut){
+                    StartCoroutine(SpinOutEffect());
+                }
                 break;
             case "Ob3":
-                
                 Debug.Log("Ob3");
+                if (!IsSpunOut)
+                {
+                    StartCoroutine(SpinOutEffect());
+                }
                 break;
             case "Ob4":
-                
                 Debug.Log("Ob4");
                 break;
-            
         }
     }
     void OnTriggerEnter2D(Collider2D collision) {
@@ -200,6 +207,27 @@ public class PlatformerMovement : MonoBehaviour
         rotationSpeed += 130;
         deceleration += 2;
         Oiled = false;
+    }
+    private IEnumerator SpinOutEffect()
+    {
+        IsSpunOut = true;
+        // Store original values
+        float originalMoveSpeed = moveSpeed;
+        float originalRotationSpeed = rotationSpeed;
+        
+        // Stop movement and increase rotation
+        moveSpeed = 0f;
+        rotationSpeed = 360f; // Fast spinning
+        Vector2 backwardDirection = -transform.up; // Opposite of car's forward direction
+        float backwardForce = 2f; // Adjust this value to control how far it moves back
+        rb.velocity = Vector2.zero; // Reset current velocity first
+        rb.AddForce(backwardDirection * backwardForce, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(1f); // Wait for 3 seconds
+        
+        // Restore original values
+        IsSpunOut = false;
+        moveSpeed = originalMoveSpeed;
+        rotationSpeed = originalRotationSpeed;
     }
 }
 
