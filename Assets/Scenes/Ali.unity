@@ -2284,6 +2284,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 19.411}
+--- !u!1 &299931582 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8967131376237411303, guid: 078205acf68187c4f90d224d4298b25d, type: 3}
+  m_PrefabInstance: {fileID: 659730307}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &303549644
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5038,6 +5043,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 6032805896405191320, guid: 078205acf68187c4f90d224d4298b25d, type: 3}
+      propertyPath: targetObject
+      value: 
+      objectReference: {fileID: 299931582}
     - target: {fileID: 8967131376237411303, guid: 078205acf68187c4f90d224d4298b25d, type: 3}
       propertyPath: m_Name
       value: Player car

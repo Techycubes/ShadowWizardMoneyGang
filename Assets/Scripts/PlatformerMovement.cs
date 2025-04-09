@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlatformerMovement : MonoBehaviour
 {
+    private List<Vector2> StoredPositions = new List<Vector2>();
     public bool isChkpt1Touch;
     public bool isChkpt2Touch;
     public bool isChkpt3Touch;
@@ -31,6 +32,8 @@ public class PlatformerMovement : MonoBehaviour
     public int SpinOutLives;
     float horizontalInput;
     float verticalInput;
+    public GameObject targetObject;
+    bool hasStartedLogging;
     void Start()
     {
         SpinOutLives = 3;
@@ -75,10 +78,18 @@ public class PlatformerMovement : MonoBehaviour
             rotationSpeed = 170f;
             maxVelocity = 15f;
         }
+
     }
+
 
     void Update()
     {
+        if (DissapearObject.CanStart && !hasStartedLogging)
+        {
+        StartCoroutine(LogPositions());
+        hasStartedLogging = true;
+        StartCoroutine(Wait60s());
+        }
         if(DissapearObject.CanStart && !IsSpunOut && SpinOutLives>0){
         // Get input
         horizontalInput = Input.GetAxis("Horizontal");
@@ -222,54 +233,66 @@ public class PlatformerMovement : MonoBehaviour
         deceleration += 2;
         Oiled = false;
     }
-private IEnumerator SpinOutEffect()
-{
-    currentVelocity = Vector2.zero;
-        horizontalInput = 0f;
-    verticalInput = 0f;
-    IsSpunOut = true;
-    
-    // Store original values
-    float originalMoveSpeed = moveSpeed;
-    float originalRotationSpeed = rotationSpeed;
-    
-    // Disable physics movement completely
-    rb.velocity = Vector2.zero;
-    rb.angularVelocity = 0f;
-    
-    // Stop movement and set spinning
-    moveSpeed = 0f;
-    rotationSpeed = 360f;
-    
-    // Calculate backward movement
-    Vector2 backwardDirection = -transform.up;
-    float backwardDistance = 1f; // How far to move back (adjust as needed)
-    Vector2 startPosition = transform.position;
-    Vector2 targetPosition = startPosition + (backwardDirection * backwardDistance);
-    float backwardDuration = 0.5f; // Time for backward movement
-    
-    // Move backward smoothly
-    float elapsedTime = 0f;
-    while (elapsedTime < backwardDuration)
+    private IEnumerator SpinOutEffect()
     {
-        elapsedTime += Time.deltaTime;
-        float t = elapsedTime / backwardDuration;
-        transform.position = Vector2.Lerp(startPosition, targetPosition, t);
-        yield return null;
+        currentVelocity = Vector2.zero;
+            horizontalInput = 0f;
+        verticalInput = 0f;
+        IsSpunOut = true;
+        
+        // Store original values
+        float originalMoveSpeed = moveSpeed;
+        float originalRotationSpeed = rotationSpeed;
+        
+        // Disable physics movement completely
+        rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0f;
+        
+        // Stop movement and set spinning
+        moveSpeed = 0f;
+        rotationSpeed = 360f;
+        
+        // Calculate backward movement
+        Vector2 backwardDirection = -transform.up;
+        float backwardDistance = 1f; // How far to move back (adjust as needed)
+        Vector2 startPosition = transform.position;
+        Vector2 targetPosition = startPosition + (backwardDirection * backwardDistance);
+        float backwardDuration = 0.5f; // Time for backward movement
+        
+        // Move backward smoothly
+        float elapsedTime = 0f;
+        while (elapsedTime < backwardDuration)
+            {
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / backwardDuration;
+            transform.position = Vector2.Lerp(startPosition, targetPosition, t);
+            yield return null;
+            }
+        transform.position = targetPosition; // Ensure exact final position
+        
+        // Spin in place for remaining time
+        yield return new WaitForSeconds(0.5f); // Total 3s with 0.5s backward movement
+        
+        // Restore original state
+        IsSpunOut = false;
+        moveSpeed = originalMoveSpeed;
+        rotationSpeed = originalRotationSpeed;
+        rb.velocity = Vector2.zero; // Ensure no residual velocity
+        rb.angularVelocity = 0f;
+        horizontalInput = 0f;
+        verticalInput = 0f;
     }
-    transform.position = targetPosition; // Ensure exact final position
-    
-    // Spin in place for remaining time
-    yield return new WaitForSeconds(0.5f); // Total 3s with 0.5s backward movement
-    
-    // Restore original state
-    IsSpunOut = false;
-    moveSpeed = originalMoveSpeed;
-    rotationSpeed = originalRotationSpeed;
-    rb.velocity = Vector2.zero; // Ensure no residual velocity
-    rb.angularVelocity = 0f;
-    horizontalInput = 0f;
-    verticalInput = 0f;
+    IEnumerator LogPositions(){
+            for (int i = 0; i < 600; i++)
+            {
+                Vector2 currentPosition = targetObject.transform.position;
+                StoredPositions.Add(currentPosition);
+                yield return new WaitForSeconds(0.1f);
+                Debug.Log(StoredPositions[i]);
+            }
+    }
+    IEnumerator Wait60s(){
+        yield return new WaitForSeconds(60f);
+        Debug.Log("60S");
+    }
 }
-}
-
