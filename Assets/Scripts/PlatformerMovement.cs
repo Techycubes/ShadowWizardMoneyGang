@@ -23,14 +23,17 @@ public class PlatformerMovement : MonoBehaviour
     public bool Oiled;
     private Vector2 currentVelocity;
   //public Animator animator;
-    private SpriteRenderer spriteRenderer;        public Sprite newSprite;
+    private SpriteRenderer spriteRenderer;
+    public Sprite newSprite;
     public Sprite newSprite2;
     public Sprite newSprite3;
     public bool IsSpunOut;
+    public int SpinOutLives;
     float horizontalInput;
     float verticalInput;
     void Start()
     {
+        SpinOutLives = 3;
         IsSpunOut = false;
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
@@ -76,7 +79,7 @@ public class PlatformerMovement : MonoBehaviour
 
     void Update()
     {
-        if(DissapearObject.CanStart && !IsSpunOut){
+        if(DissapearObject.CanStart && !IsSpunOut && SpinOutLives>0){
         // Get input
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
@@ -126,6 +129,9 @@ public class PlatformerMovement : MonoBehaviour
       }else if(IsSpunOut){
         horizontalInput = 0f;
         verticalInput = 0f;
+      }else if(SpinOutLives<=0){
+        Debug.Log("0 lives");
+        SceneManager.LoadScene("Results 1");
       }
     }
     void OnCollisionEnter2D(Collision2D collision){
@@ -135,12 +141,14 @@ public class PlatformerMovement : MonoBehaviour
                 Debug.Log("Ob1");
                 if (!IsSpunOut){
                     StartCoroutine(SpinOutEffect());
+                    SpinOutLives--;
                 }
                 break;
             case "Ob2":
                 Debug.Log("Ob2");
                 if (!IsSpunOut){
                     StartCoroutine(SpinOutEffect());
+                    SpinOutLives--;
                 }
                 break;
             case "Ob3":
@@ -148,6 +156,7 @@ public class PlatformerMovement : MonoBehaviour
                 if (!IsSpunOut)
                 {
                     StartCoroutine(SpinOutEffect());
+                    SpinOutLives--;
                 }
                 break;
             case "Ob4":
