@@ -353,7 +353,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: dafaffff
+      m_ExpandedIDs: c4eaffff1eefffffdafaffffe4ba0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -370,7 +370,7 @@ MonoBehaviour:
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_TrimLeadingAndTrailingWhitespace: 0
-        m_ClientGUIView: {fileID: 0}
+        m_ClientGUIView: {fileID: 8}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -943,9 +943,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 51.81763, y: -90.845055, z: -0.0007396143}
+    m_Target: {x: 51.86, y: -90.850006, z: 0}
     speed: 2
-    m_Value: {x: 51.81763, y: -90.845055, z: -0.0007396143}
+    m_Value: {x: 51.86, y: -90.850006, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -995,9 +995,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 1.7175574
+    m_Target: 1.6435956
     speed: 2
-    m_Value: 1.7175574
+    m_Value: 1.6435956
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1192,9 +1192,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 56b90000
-    m_LastClickedID: 47446
-    m_ExpandedIDs: 00000000e4b80000
+    m_SelectedIDs: c0b90000
+    m_LastClickedID: 47552
+    m_ExpandedIDs: 00000000e8b80000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1223,7 +1223,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000e4b80000
+    m_ExpandedIDs: 00000000e8b80000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1249,9 +1249,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 8cf8ffff
-    m_LastClickedInstanceID: -1908
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: aae7ffff
+    m_LastClickedInstanceID: -6230
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300005cb40000e2b50000fad400009ac30000d8d50000feb70000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
