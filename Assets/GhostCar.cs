@@ -21,7 +21,7 @@ public class GhostCar : MonoBehaviour
         }
 
         // Start replaying if positions are available
-        if (positions != null && positions.Count > 0 && CanStart)
+        if (positions != null && positions.Count > 0 && DissapearObject.CanStart)
         {
             StartCoroutine(ReplayPositions());
         }

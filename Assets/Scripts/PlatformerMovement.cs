@@ -295,4 +295,8 @@ public class PlatformerMovement : MonoBehaviour
         yield return new WaitForSeconds(60f);
         Debug.Log("60S");
     }
+    public List<Vector2> GetStoredPositions()
+    {
+        return StoredPositions;
+    }
 }
