@@ -2,15 +2,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ResultsDisplay : MonoBehaviour
+public class ResultDisplay : MonoBehaviour
 {
     public PlatformerMovement player;
     public TextMeshProUGUI currentTimeText;
     public TextMeshProUGUI bestTimeText;
     public TextMeshProUGUI carNameText;
-
+    float currentTime;
     void Start()
     {
+        DisplayResults();
+    }
+    void Update(){
         DisplayResults();
     }
 
@@ -22,7 +25,7 @@ public class ResultsDisplay : MonoBehaviour
             return;
         }
 
-        float currentTime = player.GetRaceTime();
+        currentTime = player.GetRaceTime();
         PlatformerMovement.HighScoreData highScore = player.GetHighScoreData();
 
         if (currentTimeText != null)

@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class PlatformerMovement : MonoBehaviour
 {
     private List<Vector2> StoredPositions = new List<Vector2>();
+    private float raceTime;
+    private bool isRaceFinished;
+    private string savePath;
     public bool isChkpt1Touch;
     public bool isChkpt2Touch;
     public bool isChkpt3Touch;
@@ -14,16 +18,15 @@ public class PlatformerMovement : MonoBehaviour
     public bool isChkpt6Touch;
     public bool isChkpt7Touch;
     public bool isChkpt8Touch;
-    public string carName = "Default"; // Local variable (no need to make it public unless Inspector needs it)
+    public string carName = "Default";
     private Rigidbody2D rb;
-    public float moveSpeed;          // Target maximum speed
-    public float acceleration;      // How quickly speed builds up
-    public float deceleration;       // How quickly speed slows down
-    public float rotationSpeed;    // Degrees per second
+    public float moveSpeed;
+    public float acceleration;
+    public float deceleration;
+    public float rotationSpeed;
     public float maxVelocity;
     public bool Oiled;
     private Vector2 currentVelocity;
-  //public Animator animator;
     private SpriteRenderer spriteRenderer;
     public Sprite newSprite;
     public Sprite newSprite2;
@@ -34,13 +37,23 @@ public class PlatformerMovement : MonoBehaviour
     float verticalInput;
     public GameObject targetObject;
     bool hasStartedLogging;
+
+    [System.Serializable]
+    public class HighScoreData
+    {
+        public string carName;
+        public float bestTime;
+        public List<Vector2> bestRunPositions;
+    }
+
     void Start()
     {
+        savePath = Application.persistentDataPath + "/highscore.json";
         SpinOutLives = 3;
         IsSpunOut = false;
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
-        carName = Selectionmenu.CarName; // Access the static CarName directly
+        carName = Selectionmenu.CarName;
         currentVelocity = Vector2.zero;
         Oiled = false;
         isChkpt1Touch = false;
@@ -51,7 +64,9 @@ public class PlatformerMovement : MonoBehaviour
         isChkpt6Touch = false;
         isChkpt7Touch = false;
         isChkpt8Touch = false;
-        // Set stats based on carName
+        raceTime = 0f;
+        isRaceFinished = false;
+
         if (carName == "Default")
         {
             spriteRenderer.sprite = newSprite3;
@@ -69,7 +84,8 @@ public class PlatformerMovement : MonoBehaviour
             deceleration = 10f;
             rotationSpeed = 160f;
             maxVelocity = 15f;
-        }else if (carName == "Car3")
+        }
+        else if (carName == "Car3")
         {
             spriteRenderer.sprite = newSprite2;
             moveSpeed = 11f;
@@ -79,91 +95,87 @@ public class PlatformerMovement : MonoBehaviour
             maxVelocity = 15f;
         }
 
+        LoadHighScore();
     }
-
 
     void Update()
     {
+        if (DissapearObject.CanStart && !isRaceFinished)
+        {
+            raceTime += Time.deltaTime;
+        }
+
         if (DissapearObject.CanStart && !hasStartedLogging)
         {
-        StartCoroutine(LogPositions());
-        hasStartedLogging = true;
-        StartCoroutine(Wait60s());
+            StartCoroutine(LogPositions());
+            hasStartedLogging = true;
+            StartCoroutine(Wait60s());
         }
-        if(DissapearObject.CanStart && !IsSpunOut && SpinOutLives>0){
-        // Get input
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
 
-        // Handle rotation
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (DissapearObject.CanStart && !IsSpunOut && SpinOutLives > 0)
         {
-            rotationSpeed += 50f;
-            maxVelocity += 1f;
+            horizontalInput = Input.GetAxis("Horizontal");
+            verticalInput = Input.GetAxis("Vertical");
+
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                rotationSpeed += 50f;
+                maxVelocity += 1f;
+            }
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                rotationSpeed -= 50f;
+                maxVelocity -= 1f;
+            }
+            if (rotationSpeed >= 0)
+            {
+                float rotationAmount = -horizontalInput * rotationSpeed * Time.deltaTime;
+                transform.Rotate(0, 0, rotationAmount);
+            }
+            else
+            {
+                rotationSpeed = 0;
+            }
+
+            Vector2 forwardDirection = transform.up;
+            Vector2 targetVelocity = forwardDirection * verticalInput * moveSpeed;
+
+            if (verticalInput != 0)
+            {
+                currentVelocity = Vector2.MoveTowards(currentVelocity, targetVelocity, acceleration * Time.deltaTime);
+            }
+            else
+            {
+                currentVelocity = Vector2.MoveTowards(currentVelocity, Vector2.zero, deceleration * Time.deltaTime);
+            }
+
+            rb.velocity = currentVelocity;
+
+            if (rb.velocity.magnitude > maxVelocity)
+            {
+                rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
+            }
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        else if (IsSpunOut)
         {
-            rotationSpeed -= 50f;
-            maxVelocity -= 1f;
+            horizontalInput = 0f;
+            verticalInput = 0f;
         }
-        if(rotationSpeed >= 0){
-            float rotationAmount = -horizontalInput * rotationSpeed * Time.deltaTime;
-            transform.Rotate(0, 0, rotationAmount);
-        }else if (rotationSpeed < 0){
-            float rotationSpeed = 0;
-        }
-
-        // Calculate target velocity
-        Vector2 forwardDirection = transform.up;
-        Vector2 targetVelocity = forwardDirection * verticalInput * moveSpeed;
-
-        // Apply acceleration/deceleration
-        if (verticalInput != 0)
+        else if (SpinOutLives <= 0)
         {
-            currentVelocity = Vector2.MoveTowards(currentVelocity, targetVelocity, acceleration * Time.deltaTime);
+            Debug.Log("0 lives");
+            SceneManager.LoadScene("Results 1");
         }
-        else
-        {
-            currentVelocity = Vector2.MoveTowards(currentVelocity, Vector2.zero, deceleration * Time.deltaTime);
-        }
-
-        // Apply velocity to Rigidbody
-        rb.velocity = currentVelocity;
-
-        // Cap max velocity
-        if (rb.velocity.magnitude > maxVelocity)
-        {
-            rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
-        }
-
-
-      }else if(IsSpunOut){
-        horizontalInput = 0f;
-        verticalInput = 0f;
-      }else if(SpinOutLives<=0){
-        Debug.Log("0 lives");
-        SceneManager.LoadScene("Results 1");
-      }
     }
-    void OnCollisionEnter2D(Collision2D collision){
-    switch(collision.gameObject.tag)
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        switch (collision.gameObject.tag)
         {
             case "Ob1":
-                Debug.Log("Ob1");
-                if (!IsSpunOut){
-                    StartCoroutine(SpinOutEffect());
-                    SpinOutLives--;
-                }
-                break;
             case "Ob2":
-                Debug.Log("Ob2");
-                if (!IsSpunOut){
-                    StartCoroutine(SpinOutEffect());
-                    SpinOutLives--;
-                }
-                break;
             case "Ob3":
-                Debug.Log("Ob3");
+                Debug.Log(collision.gameObject.tag);
                 if (!IsSpunOut)
                 {
                     StartCoroutine(SpinOutEffect());
@@ -175,9 +187,11 @@ public class PlatformerMovement : MonoBehaviour
                 break;
         }
     }
-    void OnTriggerEnter2D(Collider2D collision) {
-        
-        switch(collision.gameObject.tag){
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch (collision.gameObject.tag)
+        {
             case "Chkpt1":
                 isChkpt1Touch = true;
                 Debug.Log("c1t");
@@ -211,92 +225,135 @@ public class PlatformerMovement : MonoBehaviour
                 Debug.Log("c8t");
                 break;
         }
-        if(collision.gameObject.CompareTag("Ob4") && !Oiled && rotationSpeed>130){
+
+        if (collision.gameObject.CompareTag("Ob4") && !Oiled && rotationSpeed > 130)
+        {
             rotationSpeed -= 130;
             deceleration -= 2;
             Oiled = true;
             StartCoroutine(OilEffectTimer());
         }
-        if (collision.gameObject.CompareTag("End") && isChkpt1Touch && isChkpt2Touch && isChkpt3Touch && isChkpt4Touch && isChkpt5Touch && isChkpt6Touch && isChkpt7Touch && isChkpt8Touch)
+
+        if (collision.gameObject.CompareTag("End") && isChkpt1Touch && isChkpt2Touch && 
+            isChkpt3Touch && isChkpt4Touch && isChkpt5Touch && isChkpt6Touch && 
+            isChkpt7Touch && isChkpt8Touch)
         {
-            Debug.Log("a");
+            isRaceFinished = true;
+            SaveHighScore();
             SceneManager.LoadScene("Results");
         }
     }
-        private IEnumerator OilEffectTimer()
-    {
 
-        yield return new WaitForSeconds(5f); // Wait for 4 seconds
-        
-        // Reset values to original
+    private IEnumerator OilEffectTimer()
+    {
+        yield return new WaitForSeconds(5f);
         rotationSpeed += 130;
         deceleration += 2;
         Oiled = false;
     }
+
     private IEnumerator SpinOutEffect()
     {
         currentVelocity = Vector2.zero;
-            horizontalInput = 0f;
+        horizontalInput = 0f;
         verticalInput = 0f;
         IsSpunOut = true;
-        
-        // Store original values
+
         float originalMoveSpeed = moveSpeed;
         float originalRotationSpeed = rotationSpeed;
-        
-        // Disable physics movement completely
+
         rb.velocity = Vector2.zero;
         rb.angularVelocity = 0f;
-        
-        // Stop movement and set spinning
+
         moveSpeed = 0f;
         rotationSpeed = 360f;
-        
-        // Calculate backward movement
+
         Vector2 backwardDirection = -transform.up;
-        float backwardDistance = 1f; // How far to move back (adjust as needed)
+        float backwardDistance = 1f;
         Vector2 startPosition = transform.position;
         Vector2 targetPosition = startPosition + (backwardDirection * backwardDistance);
-        float backwardDuration = 0.5f; // Time for backward movement
-        
-        // Move backward smoothly
+        float backwardDuration = 0.5f;
+
         float elapsedTime = 0f;
         while (elapsedTime < backwardDuration)
-            {
+        {
             elapsedTime += Time.deltaTime;
             float t = elapsedTime / backwardDuration;
             transform.position = Vector2.Lerp(startPosition, targetPosition, t);
             yield return null;
-            }
-        transform.position = targetPosition; // Ensure exact final position
-        
-        // Spin in place for remaining time
-        yield return new WaitForSeconds(0.5f); // Total 3s with 0.5s backward movement
-        
-        // Restore original state
+        }
+        transform.position = targetPosition;
+
+        yield return new WaitForSeconds(0.5f);
+
         IsSpunOut = false;
         moveSpeed = originalMoveSpeed;
         rotationSpeed = originalRotationSpeed;
-        rb.velocity = Vector2.zero; // Ensure no residual velocity
+        rb.velocity = Vector2.zero;
         rb.angularVelocity = 0f;
         horizontalInput = 0f;
         verticalInput = 0f;
     }
-    IEnumerator LogPositions(){
-            for (int i = 0; i < 600; i++)
-            {
-                Vector2 currentPosition = targetObject.transform.position;
-                StoredPositions.Add(currentPosition);
-                yield return new WaitForSeconds(0.1f);
-                Debug.Log(StoredPositions[i]);
-            }
+
+    IEnumerator LogPositions()
+    {
+        StoredPositions.Clear();
+        for (int i = 0; i < 600; i++)
+        {
+            Vector2 currentPosition = targetObject.transform.position;
+            StoredPositions.Add(currentPosition);
+            yield return new WaitForSeconds(0.1f);
+            Debug.Log(StoredPositions[i]);
+        }
     }
-    IEnumerator Wait60s(){
+
+    IEnumerator Wait60s()
+    {
         yield return new WaitForSeconds(60f);
         Debug.Log("60S");
     }
+
+    void SaveHighScore()
+    {
+        HighScoreData data = LoadHighScore();
+        
+        if (data == null || raceTime < data.bestTime || data.bestTime == 0)
+        {
+            data = new HighScoreData
+            {
+                carName = carName,
+                bestTime = raceTime,
+                bestRunPositions = new List<Vector2>(StoredPositions)
+            };
+
+            string json = JsonUtility.ToJson(data);
+            File.WriteAllText(savePath, json);
+            Debug.Log($"Saved high score: {raceTime} seconds with {carName}");
+        }
+    }
+
+    HighScoreData LoadHighScore()
+    {
+        if (File.Exists(savePath))
+        {
+            string json = File.ReadAllText(savePath);
+            return JsonUtility.FromJson<HighScoreData>(json);
+        }
+        return null;
+    }
+
     public List<Vector2> GetStoredPositions()
     {
         return StoredPositions;
+    }
+
+    public float GetRaceTime()
+    {
+        return raceTime;
+    }
+
+    public HighScoreData GetHighScoreData()
+    {
+        return LoadHighScore();
     }
 }
