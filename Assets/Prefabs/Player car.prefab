@@ -143,7 +143,10 @@ MonoBehaviour:
   deceleration: 8
   rotationSpeed: 180
   maxVelocity: 10
-  animator: {fileID: 0}
+  Oiled: 0
+  newSprite: {fileID: 585383625704454523, guid: 4227ed07dceb3064e8bee014579bf30e, type: 3}
+  newSprite2: {fileID: 4973083914349784433, guid: d4971bd2ee96720449b5c6a3aadd0c41, type: 3}
+  newSprite3: {fileID: 232942018, guid: 521536aa2d1b81749bfbd5a9e7d542bb, type: 3}
 --- !u!95 &3534549692561671562
 Animator:
   serializedVersion: 7

@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class DissapearObject : MonoBehaviour
 {
-    public bool CanStart;
+    public static bool CanStart;
 public void Disappear()
     {
         
         Destroy(gameObject); // Permanently removes the object from the scene
         CanStart = true;
+        Debug.Log("Worked");
     }
 
     // Example: Destroy after a delay (for testing)
