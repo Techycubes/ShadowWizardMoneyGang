@@ -40,32 +40,27 @@ public class GhostCar : MonoBehaviour
             }
         }
 
-        bool canStart1 = false;
-        try
+        // Start coroutine to wait for CanStart
+        StartCoroutine(WaitForRaceStart());
+    }
+
+    IEnumerator WaitForRaceStart()
+    {
+        Debug.Log("Waiting for DissapearObject.CanStart to be true...");
+        while (!DissapearObject.CanStart)
         {
-            canStart1 = DissapearObject.CanStart;
-            Debug.Log($"DissapearObject.CanStart: {canStart1}");
-        }
-        catch
-        {
-            Debug.LogError("DissapearObject is not defined or inaccessible! Assuming CanStart=true");
-            canStart1 = true; // Fallback to allow replay
+            yield return null; // Wait one frame
         }
 
-        Debug.Log($"hasPreviousRun: {hasPreviousRun}, CanStart: {canStart1}");
-        if (hasPreviousRun && canStart1)
+        Debug.Log($"Race started, hasPreviousRun: {hasPreviousRun}, Positions: {(positions != null ? positions.Count : 0)}");
+        if (hasPreviousRun || (positions != null && positions.Count > 0))
         {
-            Debug.Log("Starting ReplayPositions coroutine (high score)");
-            StartCoroutine(ReplayPositions());
-        }
-        else if (positions != null && positions.Count > 0 && canStart1)
-        {
-            Debug.Log("Starting ReplayPositions coroutine (current positions)");
+            Debug.Log("Starting ReplayPositions coroutine");
             StartCoroutine(ReplayPositions());
         }
         else
         {
-            Debug.LogWarning($"Replay not started: {(hasPreviousRun ? "" : "No high score, ")}{(positions != null && positions.Count > 0 ? "" : "No positions, ")}{(canStart1 ? "" : "CanStart is false")}");
+            Debug.LogWarning("Replay not started: No high score or positions available");
         }
     }
 
