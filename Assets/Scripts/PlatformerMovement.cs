@@ -98,7 +98,7 @@ public class PlatformerMovement : MonoBehaviour
         LoadHighScore();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (DissapearObject.CanStart && !isRaceFinished)
         {

@@ -40,7 +40,6 @@ public class GhostCar : MonoBehaviour
             }
         }
 
-        // Start coroutine to wait for CanStart
         StartCoroutine(WaitForRaceStart());
     }
 
@@ -49,7 +48,7 @@ public class GhostCar : MonoBehaviour
         Debug.Log("Waiting for DissapearObject.CanStart to be true...");
         while (!DissapearObject.CanStart)
         {
-            yield return null; // Wait one frame
+            yield return null;
         }
 
         Debug.Log($"Race started, hasPreviousRun: {hasPreviousRun}, Positions: {(positions != null ? positions.Count : 0)}");
@@ -68,7 +67,7 @@ public class GhostCar : MonoBehaviour
     {
         if (isReplaying)
         {
-            Debug.Log($"GhostCar position: {transform.position}");
+            Debug.Log($"GhostCar position: {transform.position}, rotation: {transform.eulerAngles.z}");
         }
     }
 
@@ -82,6 +81,17 @@ public class GhostCar : MonoBehaviour
         {
             transform.position = positions[i];
             Debug.Log($"Moving to position {i}: {positions[i]}");
+
+            // Rotate toward next position if available
+            if (i < positions.Count - 1)
+            {
+                Vector2 direction = positions[i + 1] - positions[i];
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                // Sprite faces right, so no offset needed
+                transform.rotation = Quaternion.Euler(0, 0, angle-90);
+                Debug.Log($"Rotating to face position {i + 1}: {positions[i + 1]}, angle: {angle}");
+            }
+
             yield return new WaitForSecondsRealtime(0.1f);
         }
 
