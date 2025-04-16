@@ -13,38 +13,59 @@ public class GhostCar : MonoBehaviour
     void Start()
     {
         Debug.Log("GhostCar Start: Initializing...");
-        if (player != null)
+
+        if (player == null)
         {
-            PlatformerMovement.HighScoreData highScore = player.GetHighScoreData();
-            if (highScore != null && highScore.bestRunPositions != null && highScore.bestRunPositions.Count > 0)
-            {
-                positions = highScore.bestRunPositions;
-                bestTime = highScore.bestTime;
-                hasPreviousRun = true;
-                Debug.Log($"Loaded high score: {highScore.bestTime:F2}s, {highScore.bestRunPositions.Count} positions");
-            }
-            else
-            {
-                positions = player.GetStoredPositions();
-                Debug.Log($"No high score, using current positions: {positions.Count} positions");
-            }
+            Debug.LogError("Player reference not set in GhostCar!");
+            return;
+        }
+
+        Debug.Log("Player reference found, loading high score...");
+        PlatformerMovement.HighScoreData highScore = player.GetHighScoreData();
+        if (highScore != null && highScore.bestRunPositions != null && highScore.bestRunPositions.Count > 0)
+        {
+            positions = highScore.bestRunPositions;
+            bestTime = highScore.bestTime;
+            hasPreviousRun = true;
+            Debug.Log($"Loaded high score: Time={highScore.bestTime:F2}s, Positions={highScore.bestRunPositions.Count}");
         }
         else
         {
-            Debug.LogError("Player reference not set in GhostCar!");
+            Debug.LogWarning("No valid high score data found");
+            positions = player.GetStoredPositions();
+            Debug.Log($"Current positions count: {positions?.Count ?? 0}");
+            if (positions == null || positions.Count == 0)
+            {
+                Debug.LogWarning("No positions available from GetStoredPositions");
+            }
         }
 
-        Debug.Log($"hasPreviousRun: {hasPreviousRun}, DissapearObject.CanStart: {DissapearObject.CanStart}");
-        if (hasPreviousRun && DissapearObject.CanStart)
+        bool canStart1 = false;
+        try
         {
-            Debug.Log("Starting ReplayPositions coroutine");
+            canStart1 = DissapearObject.CanStart;
+            Debug.Log($"DissapearObject.CanStart: {canStart1}");
+        }
+        catch
+        {
+            Debug.LogError("DissapearObject is not defined or inaccessible! Assuming CanStart=true");
+            canStart1 = true; // Fallback to allow replay
+        }
+
+        Debug.Log($"hasPreviousRun: {hasPreviousRun}, CanStart: {canStart1}");
+        if (hasPreviousRun && canStart1)
+        {
+            Debug.Log("Starting ReplayPositions coroutine (high score)");
+            StartCoroutine(ReplayPositions());
+        }
+        else if (positions != null && positions.Count > 0 && canStart1)
+        {
+            Debug.Log("Starting ReplayPositions coroutine (current positions)");
             StartCoroutine(ReplayPositions());
         }
         else
         {
-            Debug.LogWarning("Replay not started: " + 
-                (hasPreviousRun ? "" : "No previous run, ") + 
-                (DissapearObject.CanStart ? "" : "CanStart is false"));
+            Debug.LogWarning($"Replay not started: {(hasPreviousRun ? "" : "No high score, ")}{(positions != null && positions.Count > 0 ? "" : "No positions, ")}{(canStart1 ? "" : "CanStart is false")}");
         }
     }
 
@@ -65,6 +86,7 @@ public class GhostCar : MonoBehaviour
         for (int i = 0; i < positions.Count; i++)
         {
             transform.position = positions[i];
+            Debug.Log($"Moving to position {i}: {positions[i]}");
             yield return new WaitForSecondsRealtime(0.1f);
         }
 
