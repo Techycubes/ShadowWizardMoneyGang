@@ -15,6 +15,7 @@ public class ResultDisplay : MonoBehaviour
     }
     void Update(){
         DisplayResults();
+                    currentTimeText.text = $"Current Time: {currentTime:F2}s";
     }
 
     void DisplayResults()
