@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6032805896405191320}
   - component: {fileID: 3534549692561671562}
   - component: {fileID: 3160829383556114629}
+  - component: {fileID: 21466139901407662}
   m_Layer: 0
   m_Name: Player car
   m_TagString: Player
@@ -115,8 +116,8 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!114 &6032805896405191320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +148,9 @@ MonoBehaviour:
   newSprite: {fileID: 585383625704454523, guid: 4227ed07dceb3064e8bee014579bf30e, type: 3}
   newSprite2: {fileID: 4973083914349784433, guid: d4971bd2ee96720449b5c6a3aadd0c41, type: 3}
   newSprite3: {fileID: 232942018, guid: 521536aa2d1b81749bfbd5a9e7d542bb, type: 3}
+  IsSpunOut: 0
+  SpinOutLives: 0
+  targetObject: {fileID: 8967131376237411303}
 --- !u!95 &3534549692561671562
 Animator:
   serializedVersion: 7
@@ -215,3 +219,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1.812248}
   m_EdgeRadius: 0
+--- !u!114 &21466139901407662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8967131376237411303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2a67fbe0213f9943b7661c87b374cd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 6032805896405191320}
+  currentTimeText: {fileID: 0}
+  bestTimeText: {fileID: 0}
+  carNameText: {fileID: 0}

@@ -6,6 +6,7 @@ using System.IO;
 
 public class PlatformerMovement : MonoBehaviour
 {
+    public Animator animator;
     private List<Vector2> StoredPositions = new List<Vector2>();
     private float raceTime;
     private bool isRaceFinished;
