@@ -13,38 +13,53 @@ public class GhostCar : MonoBehaviour
     void Start()
     {
         Debug.Log("GhostCar Start: Initializing...");
-        if (player != null)
+
+        if (player == null)
         {
-            PlatformerMovement.HighScoreData highScore = player.GetHighScoreData();
-            if (highScore != null && highScore.bestRunPositions != null && highScore.bestRunPositions.Count > 0)
-            {
-                positions = highScore.bestRunPositions;
-                bestTime = highScore.bestTime;
-                hasPreviousRun = true;
-                Debug.Log($"Loaded high score: {highScore.bestTime:F2}s, {highScore.bestRunPositions.Count} positions");
-            }
-            else
-            {
-                positions = player.GetStoredPositions();
-                Debug.Log($"No high score, using current positions: {positions.Count} positions");
-            }
+            Debug.LogError("Player reference not set in GhostCar!");
+            return;
+        }
+
+        Debug.Log("Player reference found, loading high score...");
+        PlatformerMovement.HighScoreData highScore = player.GetHighScoreData();
+        if (highScore != null && highScore.bestRunPositions != null && highScore.bestRunPositions.Count > 0)
+        {
+            positions = highScore.bestRunPositions;
+            bestTime = highScore.bestTime;
+            hasPreviousRun = true;
+            Debug.Log($"Loaded high score: Time={highScore.bestTime:F2}s, Positions={highScore.bestRunPositions.Count}");
         }
         else
         {
-            Debug.LogError("Player reference not set in GhostCar!");
+            Debug.LogWarning("No valid high score data found");
+            positions = player.GetStoredPositions();
+            Debug.Log($"Current positions count: {positions?.Count ?? 0}");
+            if (positions == null || positions.Count == 0)
+            {
+                Debug.LogWarning("No positions available from GetStoredPositions");
+            }
         }
 
-        Debug.Log($"hasPreviousRun: {hasPreviousRun}, DissapearObject.CanStart: {DissapearObject.CanStart}");
-        if (hasPreviousRun && DissapearObject.CanStart)
+        StartCoroutine(WaitForRaceStart());
+    }
+
+    IEnumerator WaitForRaceStart()
+    {
+        Debug.Log("Waiting for DissapearObject.CanStart to be true...");
+        while (!DissapearObject.CanStart)
+        {
+            yield return null;
+        }
+
+        Debug.Log($"Race started, hasPreviousRun: {hasPreviousRun}, Positions: {(positions != null ? positions.Count : 0)}");
+        if (hasPreviousRun || (positions != null && positions.Count > 0))
         {
             Debug.Log("Starting ReplayPositions coroutine");
             StartCoroutine(ReplayPositions());
         }
         else
         {
-            Debug.LogWarning("Replay not started: " + 
-                (hasPreviousRun ? "" : "No previous run, ") + 
-                (DissapearObject.CanStart ? "" : "CanStart is false"));
+            Debug.LogWarning("Replay not started: No high score or positions available");
         }
     }
 
@@ -52,7 +67,7 @@ public class GhostCar : MonoBehaviour
     {
         if (isReplaying)
         {
-            Debug.Log($"GhostCar position: {transform.position}");
+            Debug.Log($"GhostCar position: {transform.position}, rotation: {transform.eulerAngles.z}");
         }
     }
 
@@ -65,6 +80,18 @@ public class GhostCar : MonoBehaviour
         for (int i = 0; i < positions.Count; i++)
         {
             transform.position = positions[i];
+            Debug.Log($"Moving to position {i}: {positions[i]}");
+
+            // Rotate toward next position if available
+            if (i < positions.Count - 1)
+            {
+                Vector2 direction = positions[i + 1] - positions[i];
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                // Sprite faces right, so no offset needed
+                transform.rotation = Quaternion.Euler(0, 0, angle-90);
+                Debug.Log($"Rotating to face position {i + 1}: {positions[i + 1]}, angle: {angle}");
+            }
+
             yield return new WaitForSecondsRealtime(0.1f);
         }
 

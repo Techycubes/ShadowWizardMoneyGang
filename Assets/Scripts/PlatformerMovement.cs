@@ -98,7 +98,7 @@ public class PlatformerMovement : MonoBehaviour
         LoadHighScore();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (DissapearObject.CanStart && !isRaceFinished)
         {
@@ -303,7 +303,6 @@ public class PlatformerMovement : MonoBehaviour
             Vector2 currentPosition = targetObject.transform.position;
             StoredPositions.Add(currentPosition);
             yield return new WaitForSeconds(0.1f);
-            Debug.Log(StoredPositions[i]);
         }
     }
 
@@ -315,8 +314,8 @@ public class PlatformerMovement : MonoBehaviour
 
     void SaveHighScore()
     {
+        Debug.Log("Saving high score...");
         HighScoreData data = LoadHighScore();
-        
         if (data == null || raceTime < data.bestTime || data.bestTime == 0)
         {
             data = new HighScoreData
@@ -325,8 +324,8 @@ public class PlatformerMovement : MonoBehaviour
                 bestTime = raceTime,
                 bestRunPositions = new List<Vector2>(StoredPositions)
             };
-
             string json = JsonUtility.ToJson(data);
+            Debug.Log($"Saving JSON: {json}");
             File.WriteAllText(savePath, json);
             Debug.Log($"Saved high score: {raceTime} seconds with {carName}");
         }

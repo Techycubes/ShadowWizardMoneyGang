@@ -637,7 +637,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: 106}
+  m_AnchoredPosition: {x: 300, y: 81.2}
   m_SizeDelta: {x: 200, y: 57.1384}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &71369272
@@ -835,7 +835,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: 24.999992}
+  m_AnchoredPosition: {x: 300, y: 0.1999836}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &115658856
@@ -5315,10 +5315,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 3534549692561671562, guid: 078205acf68187c4f90d224d4298b25d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6032805896405191320, guid: 078205acf68187c4f90d224d4298b25d, type: 3}
       propertyPath: targetObject
       value: 
       objectReference: {fileID: 299931582}
+    - target: {fileID: 7956484651469744910, guid: 078205acf68187c4f90d224d4298b25d, type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7956484651469744910, guid: 078205acf68187c4f90d224d4298b25d, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8967131376237411303, guid: 078205acf68187c4f90d224d4298b25d, type: 3}
       propertyPath: m_Name
       value: Player car
@@ -9273,7 +9285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1525883702772188078, guid: 4ab3fb9294748d5468fe4cd11a63c1a3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 197.06
+      value: 172.26001
       objectReference: {fileID: 0}
     - target: {fileID: 1525883702772188078, guid: 4ab3fb9294748d5468fe4cd11a63c1a3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -16514,7 +16526,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: 187.06}
+  m_AnchoredPosition: {x: 300, y: 162.26}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2133809839
@@ -16975,8 +16987,8 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!212 &4849704372403264287
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17127,7 +17139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1034843017694179778, guid: 8016e764640e8fc4a9f472a1a061d081, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 168.99998
+      value: 154.1
       objectReference: {fileID: 0}
     - target: {fileID: 1034843017694179778, guid: 8016e764640e8fc4a9f472a1a061d081, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
