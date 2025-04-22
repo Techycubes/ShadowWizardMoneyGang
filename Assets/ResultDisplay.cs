@@ -9,13 +9,14 @@ public class ResultDisplay : MonoBehaviour
     public TextMeshProUGUI bestTimeText;
     public TextMeshProUGUI carNameText;
     float currentTime;
+    public int Coins;
     void Start()
     {
         DisplayResults();
     }
     void Update(){
         DisplayResults();
-                    currentTimeText.text = $"Current Time: {currentTime:F2}s";
+        currentTimeText.text = $"Current Time: {currentTime:F2}s";
     }
 
     void DisplayResults()

@@ -99,75 +99,79 @@ public class PlatformerMovement : MonoBehaviour
         LoadHighScore();
     }
 
-    void FixedUpdate()
+void FixedUpdate()
+{
+    if (DissapearObject.CanStart && !isRaceFinished)
     {
-        if (DissapearObject.CanStart && !isRaceFinished)
+        raceTime += Time.deltaTime;
+    }
+
+    if (DissapearObject.CanStart && !hasStartedLogging)
+    {
+        StartCoroutine(LogPositions());
+        hasStartedLogging = true;
+        StartCoroutine(Wait60s());
+    }
+
+    if (DissapearObject.CanStart && !IsSpunOut && SpinOutLives > 0)
+    {
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
+
+        // Update Animator with turn direction
+//        animator.SetFloat("TurnDirection", horizontalInput);
+
+        if (Input.GetKeyUp(KeyCode.Space))
         {
-            raceTime += Time.deltaTime;
+            rotationSpeed += 50f;
+            maxVelocity += 1f;
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rotationSpeed -= 50f;
+            maxVelocity -= 1f;
+        }
+        if (rotationSpeed >= 0)
+        {
+            float rotationAmount = -horizontalInput * rotationSpeed * Time.deltaTime;
+            transform.Rotate(0, 0, rotationAmount);
+        }
+        else
+        {
+            rotationSpeed = 0;
         }
 
-        if (DissapearObject.CanStart && !hasStartedLogging)
+        Vector2 forwardDirection = transform.up;
+        Vector2 targetVelocity = forwardDirection * verticalInput * moveSpeed;
+
+        if (verticalInput != 0)
         {
-            StartCoroutine(LogPositions());
-            hasStartedLogging = true;
-            StartCoroutine(Wait60s());
+            currentVelocity = Vector2.MoveTowards(currentVelocity, targetVelocity, acceleration * Time.deltaTime);
+        }
+        else
+        {
+            currentVelocity = Vector2.MoveTowards(currentVelocity, Vector2.zero, deceleration * Time.deltaTime);
         }
 
-        if (DissapearObject.CanStart && !IsSpunOut && SpinOutLives > 0)
+        rb.velocity = currentVelocity;
+
+        if (rb.velocity.magnitude > maxVelocity)
         {
-            horizontalInput = Input.GetAxis("Horizontal");
-            verticalInput = Input.GetAxis("Vertical");
-
-            if (Input.GetKeyUp(KeyCode.Space))
-            {
-                rotationSpeed += 50f;
-                maxVelocity += 1f;
-            }
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                rotationSpeed -= 50f;
-                maxVelocity -= 1f;
-            }
-            if (rotationSpeed >= 0)
-            {
-                float rotationAmount = -horizontalInput * rotationSpeed * Time.deltaTime;
-                transform.Rotate(0, 0, rotationAmount);
-            }
-            else
-            {
-                rotationSpeed = 0;
-            }
-
-            Vector2 forwardDirection = transform.up;
-            Vector2 targetVelocity = forwardDirection * verticalInput * moveSpeed;
-
-            if (verticalInput != 0)
-            {
-                currentVelocity = Vector2.MoveTowards(currentVelocity, targetVelocity, acceleration * Time.deltaTime);
-            }
-            else
-            {
-                currentVelocity = Vector2.MoveTowards(currentVelocity, Vector2.zero, deceleration * Time.deltaTime);
-            }
-
-            rb.velocity = currentVelocity;
-
-            if (rb.velocity.magnitude > maxVelocity)
-            {
-                rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
-            }
-        }
-        else if (IsSpunOut)
-        {
-            horizontalInput = 0f;
-            verticalInput = 0f;
-        }
-        else if (SpinOutLives <= 0)
-        {
-            Debug.Log("0 lives");
-            SceneManager.LoadScene("Results 1");
+            rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
         }
     }
+    else if (IsSpunOut)
+    {
+        horizontalInput = 0f;
+        verticalInput = 0f;
+//        animator.SetFloat("TurnDirection", 0f); // Reset animation when spun out
+    }
+    else if (SpinOutLives <= 0)
+    {
+        Debug.Log("0 lives");
+        SceneManager.LoadScene("Results 1");
+    }
+}
 
     void OnCollisionEnter2D(Collision2D collision)
     {
