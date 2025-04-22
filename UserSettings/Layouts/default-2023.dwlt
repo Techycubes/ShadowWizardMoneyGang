@@ -410,8 +410,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Game\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 363
-    y: 73
+    x: 364
+    y: 19
     width: 1101
     height: 541
   m_SerializedDataModeController:
@@ -511,7 +511,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 73
+    y: 19
     width: 362
     height: 541
   m_SerializedDataModeController:
@@ -1122,7 +1122,7 @@ MonoBehaviour:
   m_Position:
     m_Target: {x: 51.895714, y: -90.93805, z: -0.0031642206}
     speed: 2
-    m_Value: {x: 51.86, y: -90.850006, z: 0}
+    m_Value: {x: 51.895714, y: -90.93805, z: -0.0031642206}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1174,7 +1174,7 @@ MonoBehaviour:
   m_Size:
     m_Target: 1.9600183
     speed: 2
-    m_Value: 1.6435956
+    m_Value: 1.9600183
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1380,7 +1380,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 635
+    y: 581
     width: 1465
     height: 356
   m_SerializedDataModeController:
@@ -1415,8 +1415,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1466
-    y: 73
+    x: 1467
+    y: 19
     width: 453
     height: 918
   m_SerializedDataModeController:

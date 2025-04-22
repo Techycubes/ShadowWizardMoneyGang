@@ -38,6 +38,8 @@ public class PlatformerMovement : MonoBehaviour
     float verticalInput;
     public GameObject targetObject;
     bool hasStartedLogging;
+    float rotationAmount;
+            public int Direction;
 
     [System.Serializable]
     public class HighScoreData
@@ -119,7 +121,7 @@ void FixedUpdate()
         verticalInput = Input.GetAxis("Vertical");
 
         // Update Animator with turn direction
-//        animator.SetFloat("TurnDirection", horizontalInput);
+        
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
@@ -133,13 +135,21 @@ void FixedUpdate()
         }
         if (rotationSpeed >= 0)
         {
-            float rotationAmount = -horizontalInput * rotationSpeed * Time.deltaTime;
+            rotationAmount = -horizontalInput * rotationSpeed * Time.deltaTime;
             transform.Rotate(0, 0, rotationAmount);
         }
         else
         {
             rotationSpeed = 0;
         }
+        if(Input.GetKey("a") && !Input.GetKey("d")){
+            Direction = -1;
+        }else if(Input.GetKey("d") && !Input.GetKey("a")){
+            Direction = 1;
+        }else{
+            Direction = 0;
+        }
+        animator.SetInteger("TurnDirection", Direction);
 
         Vector2 forwardDirection = transform.up;
         Vector2 targetVelocity = forwardDirection * verticalInput * moveSpeed;
@@ -164,7 +174,7 @@ void FixedUpdate()
     {
         horizontalInput = 0f;
         verticalInput = 0f;
-//        animator.SetFloat("TurnDirection", 0f); // Reset animation when spun out
+        animator.SetFloat("TurnDirection", 0f); // Reset animation when spun out
     }
     else if (SpinOutLives <= 0)
     {
