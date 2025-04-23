@@ -38,8 +38,8 @@ public class PlatformerMovement : MonoBehaviour
     float verticalInput;
     public GameObject targetObject;
     bool hasStartedLogging;
-    float rotationAmount;
-            public int Direction;
+    private int coins; // Total coin count
+    private int Direction; // Animation direction (-1: left, 1: right, 0: idle)
 
     [System.Serializable]
     public class HighScoreData
@@ -47,6 +47,7 @@ public class PlatformerMovement : MonoBehaviour
         public string carName;
         public float bestTime;
         public List<Vector2> bestRunPositions;
+        public int coins; // Total coins earned
     }
 
     void Start()
@@ -69,6 +70,8 @@ public class PlatformerMovement : MonoBehaviour
         isChkpt8Touch = false;
         raceTime = 0f;
         isRaceFinished = false;
+        coins = 0;
+        Direction = 0; // Initialize direction
 
         if (carName == "Default")
         {
@@ -101,87 +104,92 @@ public class PlatformerMovement : MonoBehaviour
         LoadHighScore();
     }
 
-void FixedUpdate()
-{
-    if (DissapearObject.CanStart && !isRaceFinished)
+    void FixedUpdate()
     {
-        raceTime += Time.deltaTime;
-    }
-
-    if (DissapearObject.CanStart && !hasStartedLogging)
-    {
-        StartCoroutine(LogPositions());
-        hasStartedLogging = true;
-        StartCoroutine(Wait60s());
-    }
-
-    if (DissapearObject.CanStart && !IsSpunOut && SpinOutLives > 0)
-    {
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
-
-        // Update Animator with turn direction
-        
-
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (DissapearObject.CanStart && !isRaceFinished)
         {
-            rotationSpeed += 50f;
-            maxVelocity += 1f;
+            raceTime += Time.deltaTime;
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+
+        if (DissapearObject.CanStart && !hasStartedLogging)
         {
-            rotationSpeed -= 50f;
-            maxVelocity -= 1f;
+            StartCoroutine(LogPositions());
+            hasStartedLogging = true;
+            StartCoroutine(Wait60s());
         }
-        if (rotationSpeed >= 0)
+
+        if (DissapearObject.CanStart && !IsSpunOut && SpinOutLives > 0)
         {
-            rotationAmount = -horizontalInput * rotationSpeed * Time.deltaTime;
-            transform.Rotate(0, 0, rotationAmount);
+            horizontalInput = Input.GetAxis("Horizontal");
+            verticalInput = Input.GetAxis("Vertical");
+
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                rotationSpeed += 50f;
+                maxVelocity += 1f;
+            }
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                rotationSpeed -= 50f;
+                maxVelocity -= 1f;
+            }
+            if (rotationSpeed >= 0)
+            {
+                float rotationAmount = -horizontalInput * rotationSpeed * Time.deltaTime;
+                transform.Rotate(0, 0, rotationAmount);
+            }
+            else
+            {
+                rotationSpeed = 0;
+            }
+
+            // Set animation direction
+            if (Input.GetKey("a") && !Input.GetKey("d"))
+            {
+                Direction = -1; // Left
+            }
+            else if (Input.GetKey("d") && !Input.GetKey("a"))
+            {
+                Direction = 1; // Right
+            }
+            else
+            {
+                Direction = 0; // Idle
+            }
+            animator.SetInteger("TurnDirection", Direction);
+
+            Vector2 forwardDirection = transform.up;
+            Vector2 targetVelocity = forwardDirection * verticalInput * moveSpeed;
+
+            if (verticalInput != 0)
+            {
+                currentVelocity = Vector2.MoveTowards(currentVelocity, targetVelocity, acceleration * Time.deltaTime);
+            }
+            else
+            {
+                currentVelocity = Vector2.MoveTowards(currentVelocity, Vector2.zero, deceleration * Time.deltaTime);
+            }
+
+            rb.velocity = currentVelocity;
+
+            if (rb.velocity.magnitude > maxVelocity)
+            {
+                rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
+            }
         }
-        else
+        else if (IsSpunOut)
         {
-            rotationSpeed = 0;
-        }
-        if(Input.GetKey("a") && !Input.GetKey("d")){
-            Direction = -1;
-        }else if(Input.GetKey("d") && !Input.GetKey("a")){
-            Direction = 1;
-        }else{
+            horizontalInput = 0f;
+            verticalInput = 0f;
             Direction = 0;
+            animator.SetInteger("TurnDirection", 0);
         }
-        animator.SetInteger("TurnDirection", Direction);
-
-        Vector2 forwardDirection = transform.up;
-        Vector2 targetVelocity = forwardDirection * verticalInput * moveSpeed;
-
-        if (verticalInput != 0)
+        else if (SpinOutLives <= 0)
         {
-            currentVelocity = Vector2.MoveTowards(currentVelocity, targetVelocity, acceleration * Time.deltaTime);
-        }
-        else
-        {
-            currentVelocity = Vector2.MoveTowards(currentVelocity, Vector2.zero, deceleration * Time.deltaTime);
-        }
-
-        rb.velocity = currentVelocity;
-
-        if (rb.velocity.magnitude > maxVelocity)
-        {
-            rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
+            Debug.Log("0 lives");
+            SceneManager.LoadScene("Results 1");
         }
     }
-    else if (IsSpunOut)
-    {
-        horizontalInput = 0f;
-        verticalInput = 0f;
-        animator.SetFloat("TurnDirection", 0f); // Reset animation when spun out
-    }
-    else if (SpinOutLives <= 0)
-    {
-        Debug.Log("0 lives");
-        SceneManager.LoadScene("Results 1");
-    }
-}
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -329,21 +337,35 @@ void FixedUpdate()
 
     void SaveHighScore()
     {
-        Debug.Log("Saving high score...");
+        Debug.Log("Saving high score and coins...");
         HighScoreData data = LoadHighScore();
-        if (data == null || raceTime < data.bestTime || data.bestTime == 0)
+        if (data == null)
         {
+            coins = Mathf.FloorToInt(100f / raceTime) * 10; // Calculate initial coins
             data = new HighScoreData
             {
                 carName = carName,
                 bestTime = raceTime,
-                bestRunPositions = new List<Vector2>(StoredPositions)
+                bestRunPositions = new List<Vector2>(StoredPositions),
+                coins = coins
             };
-            string json = JsonUtility.ToJson(data);
-            Debug.Log($"Saving JSON: {json}");
-            File.WriteAllText(savePath, json);
-            Debug.Log($"Saved high score: {raceTime} seconds with {carName}");
         }
+        else
+        {
+            coins += Mathf.FloorToInt(100f / raceTime) * 10; // Add new coins
+            if (raceTime < data.bestTime || data.bestTime == 0)
+            {
+                data.carName = carName;
+                data.bestTime = raceTime;
+                data.bestRunPositions = new List<Vector2>(StoredPositions);
+            }
+            data.coins = coins; // Update total coins
+        }
+
+        string json = JsonUtility.ToJson(data);
+        Debug.Log($"Saving JSON: {json}");
+        File.WriteAllText(savePath, json);
+        Debug.Log($"Saved high score: {raceTime} seconds, coins: {coins} with {carName}");
     }
 
     HighScoreData LoadHighScore()
@@ -351,7 +373,12 @@ void FixedUpdate()
         if (File.Exists(savePath))
         {
             string json = File.ReadAllText(savePath);
-            return JsonUtility.FromJson<HighScoreData>(json);
+            HighScoreData data = JsonUtility.FromJson<HighScoreData>(json);
+            if (data != null)
+            {
+                coins = data.coins; // Load coins
+            }
+            return data;
         }
         return null;
     }
@@ -364,6 +391,11 @@ void FixedUpdate()
     public float GetRaceTime()
     {
         return raceTime;
+    }
+
+    public int GetCoins()
+    {
+        return coins;
     }
 
     public HighScoreData GetHighScoreData()

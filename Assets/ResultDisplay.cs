@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.IO;
 
 public class ResultDisplay : MonoBehaviour
 {
@@ -8,27 +9,37 @@ public class ResultDisplay : MonoBehaviour
     public TextMeshProUGUI currentTimeText;
     public TextMeshProUGUI bestTimeText;
     public TextMeshProUGUI carNameText;
+    public TextMeshProUGUI coinText; // Field for coin display
     float currentTime;
-    public int Coins;
+
     void Start()
     {
         DisplayResults();
     }
-    void Update(){
+
+    void Update()
+    {
         DisplayResults();
-        currentTimeText.text = $"Current Time: {currentTime:F2}s";
     }
 
     void DisplayResults()
     {
-        if (player == null)
+        PlatformerMovement.HighScoreData highScore = null;
+        if (player != null)
         {
-            Debug.LogError("Player reference not set in ResultsDisplay!");
-            return;
+            currentTime = player.GetRaceTime();
+            highScore = player.GetHighScoreData();
         }
-
-        currentTime = player.GetRaceTime();
-        PlatformerMovement.HighScoreData highScore = player.GetHighScoreData();
+        else
+        {
+            string savePath = Application.persistentDataPath + "/highscore.json";
+            if (File.Exists(savePath))
+            {
+                string json = File.ReadAllText(savePath);
+                highScore = JsonUtility.FromJson<PlatformerMovement.HighScoreData>(json);
+                currentTime = highScore.bestTime; // Fallback to best time
+            }
+        }
 
         if (currentTimeText != null)
         {
@@ -43,6 +54,11 @@ public class ResultDisplay : MonoBehaviour
         if (carNameText != null && highScore != null)
         {
             carNameText.text = $"Car: {highScore.carName}";
+        }
+
+        if (coinText != null && highScore != null)
+        {
+            coinText.text = $"Coins: {highScore.coins}";
         }
     }
 }
