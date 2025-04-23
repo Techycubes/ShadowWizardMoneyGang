@@ -6,6 +6,7 @@ using System.IO;
 
 public class PlatformerMovement : MonoBehaviour
 {
+    public Animator animator;
     private List<Vector2> StoredPositions = new List<Vector2>();
     private float raceTime;
     private bool isRaceFinished;
@@ -37,6 +38,8 @@ public class PlatformerMovement : MonoBehaviour
     float verticalInput;
     public GameObject targetObject;
     bool hasStartedLogging;
+    private int coins; // Total coin count
+    private int Direction; // Animation direction (-1: left, 1: right, 0: idle)
 
     [System.Serializable]
     public class HighScoreData
@@ -44,6 +47,7 @@ public class PlatformerMovement : MonoBehaviour
         public string carName;
         public float bestTime;
         public List<Vector2> bestRunPositions;
+        public int coins; // Total coins earned
     }
 
     void Start()
@@ -66,6 +70,8 @@ public class PlatformerMovement : MonoBehaviour
         isChkpt8Touch = false;
         raceTime = 0f;
         isRaceFinished = false;
+        coins = 0;
+        Direction = 0; // Initialize direction
 
         if (carName == "Default")
         {
@@ -137,6 +143,21 @@ public class PlatformerMovement : MonoBehaviour
                 rotationSpeed = 0;
             }
 
+            // Set animation direction
+            if (Input.GetKey("a") && !Input.GetKey("d"))
+            {
+                Direction = -1; // Left
+            }
+            else if (Input.GetKey("d") && !Input.GetKey("a"))
+            {
+                Direction = 1; // Right
+            }
+            else
+            {
+                Direction = 0; // Idle
+            }
+            animator.SetInteger("TurnDirection", Direction);
+
             Vector2 forwardDirection = transform.up;
             Vector2 targetVelocity = forwardDirection * verticalInput * moveSpeed;
 
@@ -160,6 +181,8 @@ public class PlatformerMovement : MonoBehaviour
         {
             horizontalInput = 0f;
             verticalInput = 0f;
+            Direction = 0;
+            animator.SetInteger("TurnDirection", 0);
         }
         else if (SpinOutLives <= 0)
         {
@@ -314,21 +337,35 @@ public class PlatformerMovement : MonoBehaviour
 
     void SaveHighScore()
     {
-        Debug.Log("Saving high score...");
+        Debug.Log("Saving high score and coins...");
         HighScoreData data = LoadHighScore();
-        if (data == null || raceTime < data.bestTime || data.bestTime == 0)
+        if (data == null)
         {
+            coins = Mathf.FloorToInt(100f / raceTime) * 10; // Calculate initial coins
             data = new HighScoreData
             {
                 carName = carName,
                 bestTime = raceTime,
-                bestRunPositions = new List<Vector2>(StoredPositions)
+                bestRunPositions = new List<Vector2>(StoredPositions),
+                coins = coins
             };
-            string json = JsonUtility.ToJson(data);
-            Debug.Log($"Saving JSON: {json}");
-            File.WriteAllText(savePath, json);
-            Debug.Log($"Saved high score: {raceTime} seconds with {carName}");
         }
+        else
+        {
+            coins += Mathf.FloorToInt(100f / raceTime) * 10; // Add new coins
+            if (raceTime < data.bestTime || data.bestTime == 0)
+            {
+                data.carName = carName;
+                data.bestTime = raceTime;
+                data.bestRunPositions = new List<Vector2>(StoredPositions);
+            }
+            data.coins = coins; // Update total coins
+        }
+
+        string json = JsonUtility.ToJson(data);
+        Debug.Log($"Saving JSON: {json}");
+        File.WriteAllText(savePath, json);
+        Debug.Log($"Saved high score: {raceTime} seconds, coins: {coins} with {carName}");
     }
 
     HighScoreData LoadHighScore()
@@ -336,7 +373,12 @@ public class PlatformerMovement : MonoBehaviour
         if (File.Exists(savePath))
         {
             string json = File.ReadAllText(savePath);
-            return JsonUtility.FromJson<HighScoreData>(json);
+            HighScoreData data = JsonUtility.FromJson<HighScoreData>(json);
+            if (data != null)
+            {
+                coins = data.coins; // Load coins
+            }
+            return data;
         }
         return null;
     }
@@ -349,6 +391,11 @@ public class PlatformerMovement : MonoBehaviour
     public float GetRaceTime()
     {
         return raceTime;
+    }
+
+    public int GetCoins()
+    {
+        return coins;
     }
 
     public HighScoreData GetHighScoreData()
