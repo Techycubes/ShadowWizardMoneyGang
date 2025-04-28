@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      red-curtain-background-2497_0: -5012229656225696069
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
