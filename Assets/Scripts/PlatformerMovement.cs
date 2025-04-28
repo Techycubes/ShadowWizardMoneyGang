@@ -336,37 +336,37 @@ public class PlatformerMovement : MonoBehaviour
     }
 
     void SaveHighScore()
-    {
-        Debug.Log("Saving high score and coins...");
-        HighScoreData data = LoadHighScore();
-        if (data == null)
-        {
-            coins = Mathf.FloorToInt(100f / raceTime) * 10; // Calculate initial coins
-            data = new HighScoreData
-            {
-                carName = carName,
-                bestTime = raceTime,
-                bestRunPositions = new List<Vector2>(StoredPositions),
-                coins = coins
-            };
-        }
-        else
-        {
-            coins += Mathf.FloorToInt(100f / raceTime) * 10; // Add new coins
-            if (raceTime < data.bestTime || data.bestTime == 0)
-            {
-                data.carName = carName;
-                data.bestTime = raceTime;
-                data.bestRunPositions = new List<Vector2>(StoredPositions);
-            }
-            data.coins = coins; // Update total coins
-        }
+{
+    Debug.Log("Saving high score and coins...");
+    HighScoreData data = LoadHighScore();
+    int newCoins = 3 + Mathf.FloorToInt(1000f / raceTime); // Base 3 coins + more for faster laps
 
-        string json = JsonUtility.ToJson(data);
-        Debug.Log($"Saving JSON: {json}");
-        File.WriteAllText(savePath, json);
-        Debug.Log($"Saved high score: {raceTime} seconds, coins: {coins} with {carName}");
+    if (data == null)
+    {
+        data = new HighScoreData
+        {
+            carName = carName,
+            bestTime = raceTime,
+            bestRunPositions = new List<Vector2>(StoredPositions),
+            coins = newCoins
+        };
     }
+    else
+    {
+        data.coins += newCoins; // Accumulate coins
+        if (raceTime < data.bestTime || data.bestTime == 0)
+        {
+            data.carName = carName;
+            data.bestTime = raceTime;
+            data.bestRunPositions = new List<Vector2>(StoredPositions);
+        }
+    }
+
+    string json = JsonUtility.ToJson(data);
+    Debug.Log($"Saving JSON: {json}");
+    File.WriteAllText(savePath, json);
+    Debug.Log($"Saved high score: {raceTime}s, coins: {data.coins} with {carName}");
+}
 
     HighScoreData LoadHighScore()
     {
