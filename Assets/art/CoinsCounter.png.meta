@@ -1,37 +1,28 @@
 fileFormatVersion: 2
-guid: 5f81f3ad5b050e94a82ce25761fc53fd
+guid: 1f8f9daf118f30f498718304b5f5ee2d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6424879915368372768
-    second: ResultScreenAnim (1)_0
+      213: -4041308712064777784
+    second: CoinsCounter_0
   - first:
-      213: 3273605872899861994
-    second: ResultScreenAnim (1)_1
+      213: -550929180283739859
+    second: CoinsCounter_1
   - first:
-      213: 2402852122706386658
-    second: ResultScreenAnim (1)_2
+      213: -7124608367010645991
+    second: CoinsCounter_2
   - first:
-      213: 2834667727842790685
-    second: ResultScreenAnim (1)_3
+      213: -1306683895389957920
+    second: CoinsCounter_3
   - first:
-      213: -6098244475283220790
-    second: ResultScreenAnim (1)_4
+      213: 6067641705058803472
+    second: CoinsCounter_4
   - first:
-      213: 8082692558653905336
-    second: ResultScreenAnim (1)_5
+      213: 3799817121197462292
+    second: CoinsCounter_5
   - first:
-      213: -7337283257974404682
-    second: ResultScreenAnim (1)_6
-  - first:
-      213: 683972282986540229
-    second: ResultScreenAnim (1)_7
-  - first:
-      213: 3861204203871554674
-    second: ResultScreenAnim (1)_8
-  - first:
-      213: -5819417607627086258
-    second: ResultScreenAnim (1)_9
+      213: -129879266310682079
+    second: CoinsCounter_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -64,7 +55,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -78,7 +69,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -127,13 +118,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ResultScreenAnim (1)_0
+      name: CoinsCounter_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 4173
-        width: 1800
-        height: 1390
+        x: 9
+        y: 19
+        width: 52
+        height: 102
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 02ad2181e32c92950800000000000000
-      internalID: 6424879915368372768
+      spriteID: 8c100bd53236ae7c0800000000000000
+      internalID: -4041308712064777784
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ResultScreenAnim (1)_1
+      name: CoinsCounter_1
       rect:
         serializedVersion: 2
-        x: 1800
-        y: 4173
-        width: 1800
-        height: 1390
+        x: 69
+        y: 19
+        width: 52
+        height: 102
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: aed24d4723f2e6d20800000000000000
-      internalID: 3273605872899861994
+      spriteID: d216ac854d4ba58f0800000000000000
+      internalID: -550929180283739859
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ResultScreenAnim (1)_2
+      name: CoinsCounter_2
       rect:
         serializedVersion: 2
-        x: 3600
-        y: 4173
-        width: 1800
-        height: 1390
+        x: 129
+        y: 19
+        width: 52
+        height: 102
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,20 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2ee15b55645a85120800000000000000
-      internalID: 2402852122706386658
+      spriteID: 918fd80207e402d90800000000000000
+      internalID: -7124608367010645991
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ResultScreenAnim (1)_3
+      name: CoinsCounter_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 2783
-        width: 1800
-        height: 1390
+        x: 189
+        y: 19
+        width: 52
+        height: 102
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,20 +195,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d1d455e9743c65720800000000000000
-      internalID: 2834667727842790685
+      spriteID: 0e0de859be9bddde0800000000000000
+      internalID: -1306683895389957920
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ResultScreenAnim (1)_4
+      name: CoinsCounter_4
       rect:
         serializedVersion: 2
-        x: 1800
-        y: 2783
-        width: 1800
-        height: 1390
+        x: 249
+        y: 19
+        width: 52
+        height: 102
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -225,20 +216,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ac65149a5feae5ba0800000000000000
-      internalID: -6098244475283220790
+      spriteID: 01f1066abf7943450800000000000000
+      internalID: 6067641705058803472
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ResultScreenAnim (1)_5
+      name: CoinsCounter_5
       rect:
         serializedVersion: 2
-        x: 3600
-        y: 2783
-        width: 1800
-        height: 1390
+        x: 319
+        y: 99
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -246,20 +237,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8b95243ee0e7b2070800000000000000
-      internalID: 8082692558653905336
+      spriteID: 4131c681a89abb430800000000000000
+      internalID: 3799817121197462292
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ResultScreenAnim (1)_6
+      name: CoinsCounter_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1393
-        width: 1800
-        height: 1390
+        x: 319
+        y: 29
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -267,71 +258,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6b9c30060cbbc2a90800000000000000
-      internalID: -7337283257974404682
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ResultScreenAnim (1)_7
-      rect:
-        serializedVersion: 2
-        x: 1800
-        y: 1393
-        width: 1800
-        height: 1390
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5cc20a3ea25fd7900800000000000000
-      internalID: 683972282986540229
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ResultScreenAnim (1)_8
-      rect:
-        serializedVersion: 2
-        x: 3600
-        y: 1393
-        width: 1800
-        height: 1390
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 27c420114c0c59530800000000000000
-      internalID: 3861204203871554674
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ResultScreenAnim (1)_9
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 3
-        width: 1800
-        height: 1390
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e46ebb9b4864d3fa0800000000000000
-      internalID: -5819417607627086258
+      spriteID: 12a0dd3de73923ef0800000000000000
+      internalID: -129879266310682079
       vertices: []
       indices: 
       edges: []
@@ -339,24 +267,14 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: ec400f9a43dbc5e439cd40fdaef9d3a1
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      ResultScreenAnim (1)_0: 6424879915368372768
-      ResultScreenAnim (1)_1: 3273605872899861994
-      ResultScreenAnim (1)_2: 2402852122706386658
-      ResultScreenAnim (1)_3: 2834667727842790685
-      ResultScreenAnim (1)_4: -6098244475283220790
-      ResultScreenAnim (1)_5: 8082692558653905336
-      ResultScreenAnim (1)_6: -7337283257974404682
-      ResultScreenAnim (1)_7: 683972282986540229
-      ResultScreenAnim (1)_8: 3861204203871554674
-      ResultScreenAnim (1)_9: -5819417607627086258
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
