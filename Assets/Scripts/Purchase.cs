@@ -8,6 +8,11 @@ public class Purchase : MonoBehaviour
     public static bool is3Purchase = false;
     public PlatformerMovement player; // Reference to PlatformerMovement
 
+    void Awake()
+    {
+        Debug.Log($"Purchase script initialized on {gameObject.name}, Player assigned: {player != null}");
+    }
+
     void Start()
     {
         if (player == null)
@@ -16,25 +21,44 @@ public class Purchase : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        Debug.Log($"Purchase script active on {gameObject.name}, Scene: {UnityEngine.SceneManagement.SceneManager.GetActiveScene().name}");
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Debug.Log("Manual purchase test triggered with KeyCode.P");
+            Select("Car2");
+        }
+    }
+
     public void Select(string car)
     {
+        Debug.Log($"Purchase.Select called with car: '{car}', Player: {(player != null ? player.gameObject.name : "null")}");
+        
         if (player == null)
         {
             Debug.LogError("Cannot purchase: Player reference is null!");
             return;
         }
 
-        if (car == "Car2" && !is2Purchase && player.GetCoins() >= 30)
+        int currentCoins = player.GetCoins();
+        Debug.Log($"Attempting to purchase {car}, Coins: {currentCoins}, Car2Purchased: {is2Purchase}, Car3Purchased: {is3Purchase}");
+
+        if (string.Equals(car, "Car2", System.StringComparison.OrdinalIgnoreCase) && !is2Purchase && currentCoins >= 30)
         {
             is2Purchase = true;
-            player.UpdateCoins(player.GetCoins() - 30);
+            player.UpdateCoins(currentCoins - 30);
             Debug.Log("Purchased Car2 for 30 coins");
         }
-        if (car == "Car3" && !is3Purchase && player.GetCoins() >= 100)
+        else if (string.Equals(car, "Car3", System.StringComparison.OrdinalIgnoreCase) && !is3Purchase && currentCoins >= 100)
         {
             is3Purchase = true;
-            player.UpdateCoins(player.GetCoins() - 100);
+            player.UpdateCoins(currentCoins - 100);
             Debug.Log("Purchased Car3 for 100 coins");
+        }
+        else
+        {
+            Debug.LogWarning($"Purchase failed: car={car}, Coins={currentCoins}, Car2Purchased={is2Purchase}, Car3Purchased={is3Purchase}");
         }
     }
 }

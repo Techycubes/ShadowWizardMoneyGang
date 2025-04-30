@@ -45,6 +45,8 @@ public class PlatformerMovement : MonoBehaviour
     public class HighScoreData
     {
         public int coins; // Total coins across all levels
+        public bool isCar2Purchased; // Persist Car2 purchase
+        public bool isCar3Purchased; // Persist Car3 purchase
         public List<LevelData> levels = new List<LevelData>();
     }
 
@@ -328,14 +330,12 @@ public class PlatformerMovement : MonoBehaviour
     IEnumerator LogPositions()
     {
         StoredPositions.Clear();
-    // LogPositions
-    for (int i = 0; i < 3000; i++)
-    {
-        StoredPositions.Add(targetObject.transform.position);
-        yield return new WaitForSeconds(0.02f);
-    }
-    // ReplayPositions
-    yield return new WaitForSecondsRealtime(0.02f);
+        for (int i = 0; i < 600; i++)
+        {
+            Vector2 currentPosition = targetObject.transform.position;
+            StoredPositions.Add(currentPosition);
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 
     IEnumerator Wait60s()
@@ -352,6 +352,8 @@ public class PlatformerMovement : MonoBehaviour
         int newCoins = 3 + Mathf.FloorToInt(1000f / raceTime);
 
         data.coins += newCoins; // Add to total coins
+        data.isCar2Purchased = Purchase.is2Purchase; // Sync purchase flags
+        data.isCar3Purchased = Purchase.is3Purchase;
 
         LevelData levelData = data.levels.Find(ld => ld.level == currentLevel);
         if (levelData == null)
@@ -383,17 +385,35 @@ public class PlatformerMovement : MonoBehaviour
 
     HighScoreData LoadHighScore()
     {
-        if (File.Exists(savePath))
+        Debug.Log($"Loading high score from: {savePath}");
+        if (!File.Exists(savePath))
+        {
+            Debug.LogWarning("highscore.json does not exist, returning new HighScoreData");
+            return new HighScoreData();
+        }
+
+        try
         {
             string json = File.ReadAllText(savePath);
+            Debug.Log($"Read JSON: {json}");
             HighScoreData data = JsonUtility.FromJson<HighScoreData>(json);
-            if (data != null)
+            if (data == null)
             {
-                coins = data.coins; // Update total coins
+                Debug.LogError("Failed to deserialize highscore.json, returning new HighScoreData");
+                return new HighScoreData();
             }
+
+            coins = data.coins;
+            Purchase.is2Purchase = data.isCar2Purchased;
+            Purchase.is3Purchase = data.isCar3Purchased;
+            Debug.Log($"Loaded coins: {data.coins}, Car2Purchased: {data.isCar2Purchased}, Car3Purchased: {data.isCar3Purchased}");
             return data;
         }
-        return null;
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Error loading highscore.json: {e.Message}");
+            return new HighScoreData();
+        }
     }
 
     public void UpdateCoins(int newCoinTotal)
@@ -401,9 +421,11 @@ public class PlatformerMovement : MonoBehaviour
         coins = newCoinTotal;
         HighScoreData data = LoadHighScore() ?? new HighScoreData();
         data.coins = coins;
+        data.isCar2Purchased = Purchase.is2Purchase;
+        data.isCar3Purchased = Purchase.is3Purchase;
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(savePath, json);
-        Debug.Log($"Saved coins: {coins}");
+        Debug.Log($"Saved coins: {coins}, Car2Purchased: {data.isCar2Purchased}, Car3Purchased: {data.isCar3Purchased}");
     }
 
     public List<Vector2> GetStoredPositions()
