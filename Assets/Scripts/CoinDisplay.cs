@@ -25,7 +25,9 @@ public class CoinDisplay : MonoBehaviour
     {
         if (player != null && coinText != null)
         {
-            coinText.text = "Coins: " + player.GetCoins().ToString();
+            PlatformerMovement.HighScoreData highScore = player.GetHighScoreData();
+            int totalCoins = highScore != null ? highScore.coins : 0;
+            coinText.text = "Coins: " + totalCoins.ToString();
         }
     }
 }

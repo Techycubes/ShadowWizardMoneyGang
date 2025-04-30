@@ -22,16 +22,22 @@ public class GhostCar : MonoBehaviour
 
         Debug.Log("Player reference found, loading high score...");
         PlatformerMovement.HighScoreData highScore = player.GetHighScoreData();
-        if (highScore != null && highScore.bestRunPositions != null && highScore.bestRunPositions.Count > 0)
+        PlatformerMovement.LevelData levelData = null;
+        if (highScore != null)
         {
-            positions = highScore.bestRunPositions;
-            bestTime = highScore.bestTime;
+            string currentLevel = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+            levelData = highScore.levels.Find(ld => ld.level == currentLevel);
+        }
+        if (levelData != null && levelData.bestRunPositions != null && levelData.bestRunPositions.Count > 0)
+        {
+            positions = levelData.bestRunPositions;
+            bestTime = levelData.bestTime;
             hasPreviousRun = true;
-            Debug.Log($"Loaded high score: Time={highScore.bestTime:F2}s, Positions={highScore.bestRunPositions.Count}");
+            Debug.Log($"Loaded high score: Time={levelData.bestTime:F2}s, Positions={levelData.bestRunPositions.Count}");
         }
         else
         {
-            Debug.LogWarning("No valid high score data found");
+            Debug.LogWarning("No valid high score data found for current level");
             positions = player.GetStoredPositions();
             Debug.Log($"Current positions count: {positions?.Count ?? 0}");
             if (positions == null || positions.Count == 0)

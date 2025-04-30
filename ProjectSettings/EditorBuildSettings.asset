@@ -26,5 +26,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Results 1.unity
     guid: e206e73209ea0db468a08b7ae0a8f416
+  - enabled: 1
+    path: Assets/Scenes/Ali 1.unity
+    guid: c0022e70593fa8d45be6a1dc6a4d241b
+  - enabled: 1
+    path: Assets/Scenes/Selection 1.unity
+    guid: 9f73b2b4a0b6fa9428c4596d63a19913
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

@@ -44,10 +44,17 @@ public class PlatformerMovement : MonoBehaviour
     [System.Serializable]
     public class HighScoreData
     {
+        public int coins; // Total coins across all levels
+        public List<LevelData> levels = new List<LevelData>();
+    }
+
+    [System.Serializable]
+    public class LevelData
+    {
+        public string level;
         public string carName;
         public float bestTime;
         public List<Vector2> bestRunPositions;
-        public int coins; // Total coins earned
     }
 
     void Start()
@@ -336,37 +343,41 @@ public class PlatformerMovement : MonoBehaviour
     }
 
     void SaveHighScore()
-{
-    Debug.Log("Saving high score and coins...");
-    HighScoreData data = LoadHighScore();
-    int newCoins = 3 + Mathf.FloorToInt(1000f / raceTime); // Base 3 coins + more for faster laps
+    {
+        Debug.Log("Saving high score and coins...");
+        HighScoreData data = LoadHighScore() ?? new HighScoreData();
+        string currentLevel = SceneManager.GetActiveScene().name;
+        int newCoins = 3 + Mathf.FloorToInt(1000f / raceTime);
 
-    if (data == null)
-    {
-        data = new HighScoreData
+        data.coins += newCoins; // Add to total coins
+
+        LevelData levelData = data.levels.Find(ld => ld.level == currentLevel);
+        if (levelData == null)
         {
-            carName = carName,
-            bestTime = raceTime,
-            bestRunPositions = new List<Vector2>(StoredPositions),
-            coins = newCoins
-        };
-    }
-    else
-    {
-        data.coins += newCoins; // Accumulate coins
-        if (raceTime < data.bestTime || data.bestTime == 0)
-        {
-            data.carName = carName;
-            data.bestTime = raceTime;
-            data.bestRunPositions = new List<Vector2>(StoredPositions);
+            levelData = new LevelData
+            {
+                level = currentLevel,
+                carName = carName,
+                bestTime = raceTime,
+                bestRunPositions = new List<Vector2>(StoredPositions)
+            };
+            data.levels.Add(levelData);
         }
-    }
+        else
+        {
+            if (raceTime < levelData.bestTime || levelData.bestTime == 0)
+            {
+                levelData.carName = carName;
+                levelData.bestTime = raceTime;
+                levelData.bestRunPositions = new List<Vector2>(StoredPositions);
+            }
+        }
 
-    string json = JsonUtility.ToJson(data);
-    Debug.Log($"Saving JSON: {json}");
-    File.WriteAllText(savePath, json);
-    Debug.Log($"Saved high score: {raceTime}s, coins: {data.coins} with {carName}");
-}
+        string json = JsonUtility.ToJson(data);
+        Debug.Log($"Saving JSON: {json}");
+        File.WriteAllText(savePath, json);
+        Debug.Log($"Saved high score for {currentLevel}: {raceTime}s, total coins: {data.coins} with {carName}");
+    }
 
     HighScoreData LoadHighScore()
     {
@@ -376,7 +387,7 @@ public class PlatformerMovement : MonoBehaviour
             HighScoreData data = JsonUtility.FromJson<HighScoreData>(json);
             if (data != null)
             {
-                coins = data.coins; // Load coins
+                coins = data.coins; // Update total coins
             }
             return data;
         }
