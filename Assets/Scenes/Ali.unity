@@ -5330,14 +5330,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
-    - target: {fileID: 3534549692561671562, guid: 078205acf68187c4f90d224d4298b25d, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6032805896405191320, guid: 078205acf68187c4f90d224d4298b25d, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 2031270238}
     - target: {fileID: 8967131376237411303, guid: 078205acf68187c4f90d224d4298b25d, type: 3}
       propertyPath: m_Name
       value: Player car
@@ -16096,11 +16088,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 848444804162789922, guid: c6e6c66e233b24c4c96ba390740c0b44, type: 3}
   m_PrefabInstance: {fileID: 2013964220}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &2031270238 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3534549692561671562, guid: 078205acf68187c4f90d224d4298b25d, type: 3}
-  m_PrefabInstance: {fileID: 659730307}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2052924537
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17200,7 +17187,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3439907187203139204}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 574a8c25157ed9f4dadc349214a5bdb5, type: 2}
   m_CullingMode: 0
@@ -17399,6 +17386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 659730311}
+  animator: {fileID: 7116137186620561641}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

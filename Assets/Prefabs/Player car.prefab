@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e98e2c1f451fb19408b29e0e52ee4309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 3534549692561671562}
   isChkpt1Touch: 0
   isChkpt2Touch: 0
   isChkpt3Touch: 0
@@ -151,6 +152,7 @@ MonoBehaviour:
   IsSpunOut: 0
   SpinOutLives: 0
   targetObject: {fileID: 8967131376237411303}
+  coins: 0
 --- !u!95 &3534549692561671562
 Animator:
   serializedVersion: 7
@@ -159,7 +161,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8967131376237411303}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 574a8c25157ed9f4dadc349214a5bdb5, type: 2}
   m_CullingMode: 0
@@ -235,3 +237,4 @@ MonoBehaviour:
   currentTimeText: {fileID: 0}
   bestTimeText: {fileID: 0}
   carNameText: {fileID: 0}
+  coinText: {fileID: 0}

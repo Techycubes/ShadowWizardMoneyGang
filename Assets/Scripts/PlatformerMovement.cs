@@ -38,7 +38,7 @@ public class PlatformerMovement : MonoBehaviour
     float verticalInput;
     public GameObject targetObject;
     bool hasStartedLogging;
-    private int coins; // Total coin count
+    public int coins; // Total coin count
     private int Direction; // Animation direction (-1: left, 1: right, 0: idle)
 
     [System.Serializable]
@@ -328,12 +328,14 @@ public class PlatformerMovement : MonoBehaviour
     IEnumerator LogPositions()
     {
         StoredPositions.Clear();
-        for (int i = 0; i < 600; i++)
-        {
-            Vector2 currentPosition = targetObject.transform.position;
-            StoredPositions.Add(currentPosition);
-            yield return new WaitForSeconds(0.1f);
-        }
+    // LogPositions
+    for (int i = 0; i < 3000; i++)
+    {
+        StoredPositions.Add(targetObject.transform.position);
+        yield return new WaitForSeconds(0.02f);
+    }
+    // ReplayPositions
+    yield return new WaitForSecondsRealtime(0.02f);
     }
 
     IEnumerator Wait60s()
@@ -392,6 +394,16 @@ public class PlatformerMovement : MonoBehaviour
             return data;
         }
         return null;
+    }
+
+    public void UpdateCoins(int newCoinTotal)
+    {
+        coins = newCoinTotal;
+        HighScoreData data = LoadHighScore() ?? new HighScoreData();
+        data.coins = coins;
+        string json = JsonUtility.ToJson(data);
+        File.WriteAllText(savePath, json);
+        Debug.Log($"Saved coins: {coins}");
     }
 
     public List<Vector2> GetStoredPositions()
