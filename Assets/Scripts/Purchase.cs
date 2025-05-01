@@ -23,12 +23,6 @@ public class Purchase : MonoBehaviour
 
     void Update()
     {
-        Debug.Log($"Purchase script active on {gameObject.name}, Scene: {UnityEngine.SceneManagement.SceneManager.GetActiveScene().name}");
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Debug.Log("Manual purchase test triggered with KeyCode.P");
-            Select("Car2");
-        }
     }
 
     public void Select(string car)
