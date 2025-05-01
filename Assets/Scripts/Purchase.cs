@@ -14,20 +14,29 @@ public class Purchase : MonoBehaviour
     {
         savePath = Path.Combine("C:/Formula2Game", "highscore.json");
         player = FindObjectOfType<PlatformerMovement>();
-        Debug.Log($"Purchase script initialized on {gameObject.name}, Player assigned: {player != null}, savePath: {savePath}");
+        Debug.Log($"Purchase Awake: Initialized on {gameObject.name}, Player found: {player != null}, Player GameObject: {(player != null ? player.gameObject.name : "null")}, Scene: {UnityEngine.SceneManagement.SceneManager.GetActiveScene().name}, savePath: {savePath}");
+    }
+
+    void OnEnable()
+    {
+        if (player == null)
+        {
+            player = FindObjectOfType<PlatformerMovement>();
+            Debug.Log($"Purchase OnEnable: Refreshed player reference, Player found: {player != null}, Player GameObject: {(player != null ? player.gameObject.name : "null")}, Scene: {UnityEngine.SceneManagement.SceneManager.GetActiveScene().name}");
+        }
     }
 
     void Start()
     {
         if (player == null)
         {
-            Debug.LogError("Player reference not found in Purchase script!");
+            Debug.LogError($"Purchase Start: Player reference not found in {gameObject.name}, Scene: {UnityEngine.SceneManagement.SceneManager.GetActiveScene().name}!");
         }
     }
 
     void Update()
     {
-        Debug.Log($"Purchase script active on {gameObject.name}, Scene: {UnityEngine.SceneManagement.SceneManager.GetActiveScene().name}");
+        Debug.Log($"Purchase Update: Active on {gameObject.name}, Scene: {UnityEngine.SceneManagement.SceneManager.GetActiveScene().name}, Player: {(player != null ? player.gameObject.name : "null")}");
         if (Input.GetKeyDown(KeyCode.P))
         {
             Debug.Log("Manual purchase test triggered with KeyCode.P");
@@ -37,11 +46,17 @@ public class Purchase : MonoBehaviour
 
     public void Select(string car)
     {
-        Debug.Log($"Purchase.Select called with car: '{car}', Player: {(player != null ? player.gameObject.name : "null")}");
+        Debug.Log($"Purchase.Select called with car: '{car}', Player: {(player != null ? player.gameObject.name : "null")}, Scene: {UnityEngine.SceneManagement.SceneManager.GetActiveScene().name}");
 
         if (player == null)
         {
-            Debug.LogError("Cannot purchase: Player reference is null!");
+            player = FindObjectOfType<PlatformerMovement>();
+            Debug.Log($"Purchase.Select: Player was null, attempted to re-find, Player found: {player != null}, Player GameObject: {(player != null ? player.gameObject.name : "null")}");
+        }
+
+        if (player == null)
+        {
+            Debug.LogError($"Cannot purchase: Player reference is null in {gameObject.name}, Scene: {UnityEngine.SceneManagement.SceneManager.GetActiveScene().name}!");
             return;
         }
 
