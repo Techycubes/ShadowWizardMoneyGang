@@ -5,12 +5,10 @@ using UnityEngine;
 public class GhostCar : MonoBehaviour
 {
     public PlatformerMovement player;
-    public Animator animator; // Reference to GhostCar's Animator
     private List<Vector2> positions;
     private bool isReplaying = false;
     private bool hasPreviousRun = false;
     private float bestTime;
-    private float previousAngle; // Track previous rotation for turn detection
 
     void Start()
     {
@@ -20,12 +18,6 @@ public class GhostCar : MonoBehaviour
         {
             Debug.LogError("Player reference not set in GhostCar!");
             return;
-        }
-
-        if (animator == null)
-        {
-            Debug.LogError("Animator not set in GhostCar!");
-            animator = GetComponent<Animator>(); // Try to get Animator if not assigned
         }
 
         Debug.Log("Player reference found, loading high score...");
@@ -90,7 +82,6 @@ public class GhostCar : MonoBehaviour
         isReplaying = true;
         gameObject.SetActive(true);
         Debug.Log("Replay started");
-        previousAngle = transform.eulerAngles.z; // Initialize previous angle
 
         for (int i = 0; i < positions.Count; i++)
         {
@@ -103,21 +94,6 @@ public class GhostCar : MonoBehaviour
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Euler(0, 0, angle - 90);
                 Debug.Log($"Rotating to face position {i + 1}: {positions[i + 1]}, angle: {angle}");
-
-                // Detect turn direction
-                float angleDelta = Mathf.DeltaAngle(previousAngle, angle);
-                const float turnThreshold = 5f; // Minimum angle change to trigger animation
-                if (angleDelta > turnThreshold)
-                {
-                    animator.SetTrigger("LeftTurn");
-                    Debug.Log($"Triggering LeftTurn: angleDelta={angleDelta:F2}");
-                }
-                else if (angleDelta < -turnThreshold)
-                {
-                    animator.SetTrigger("RightTurn");
-                    Debug.Log($"Triggering RightTurn: angleDelta={angleDelta:F2}");
-                }
-                previousAngle = angle;
             }
 
             yield return new WaitForSecondsRealtime(0.1f);

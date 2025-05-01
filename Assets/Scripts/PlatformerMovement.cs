@@ -40,6 +40,7 @@ public class PlatformerMovement : MonoBehaviour
     bool hasStartedLogging;
     public int coins; // Total coin count
     private int Direction; // Animation direction (-1: left, 1: right, 0: idle)
+    private HighScoreData cachedHighScoreData;
 
     [System.Serializable]
     public class HighScoreData
@@ -59,9 +60,15 @@ public class PlatformerMovement : MonoBehaviour
         public List<Vector2> bestRunPositions;
     }
 
+    void Awake()
+    {
+        savePath = Path.Combine("C:/Formula2Game", "highscore.json");
+        Debug.Log($"Awake: savePath={savePath}, writable={IsPathWritable(savePath)}");
+        LoadHighScore();
+    }
+
     void Start()
     {
-        savePath = Application.persistentDataPath + "/highscore.json";
         SpinOutLives = 3;
         IsSpunOut = false;
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -79,7 +86,7 @@ public class PlatformerMovement : MonoBehaviour
         isChkpt8Touch = false;
         raceTime = 0f;
         isRaceFinished = false;
-        coins = 0;
+        coins = cachedHighScoreData?.coins ?? 0;
         Direction = 0; // Initialize direction
 
         if (carName == "Default")
@@ -109,8 +116,6 @@ public class PlatformerMovement : MonoBehaviour
             rotationSpeed = 170f;
             maxVelocity = 15f;
         }
-
-        LoadHighScore();
     }
 
     void FixedUpdate()
@@ -347,12 +352,12 @@ public class PlatformerMovement : MonoBehaviour
     void SaveHighScore()
     {
         Debug.Log("Saving high score and coins...");
-        HighScoreData data = LoadHighScore() ?? new HighScoreData();
+        HighScoreData data = cachedHighScoreData ?? new HighScoreData();
         string currentLevel = SceneManager.GetActiveScene().name;
         int newCoins = 3 + Mathf.FloorToInt(1000f / raceTime);
 
-        data.coins += newCoins; // Add to total coins
-        data.isCar2Purchased = Purchase.is2Purchase; // Sync purchase flags
+        data.coins += newCoins;
+        data.isCar2Purchased = Purchase.is2Purchase;
         data.isCar3Purchased = Purchase.is3Purchase;
 
         LevelData levelData = data.levels.Find(ld => ld.level == currentLevel);
@@ -377,32 +382,64 @@ public class PlatformerMovement : MonoBehaviour
             }
         }
 
-        string json = JsonUtility.ToJson(data);
-        Debug.Log($"Saving JSON: {json}");
-        File.WriteAllText(savePath, json);
-        Debug.Log($"Saved high score for {currentLevel}: {raceTime}s, total coins: {data.coins} with {carName}");
+        cachedHighScoreData = data;
+        SaveToFile(data);
     }
 
     HighScoreData LoadHighScore()
     {
+        if (cachedHighScoreData != null)
+        {
+            Debug.Log($"Returning cached HighScoreData, coins: {cachedHighScoreData.coins}, Car2Purchased: {cachedHighScoreData.isCar2Purchased}, Car3Purchased: {cachedHighScoreData.isCar3Purchased}");
+            coins = cachedHighScoreData.coins;
+            Purchase.is2Purchase = cachedHighScoreData.isCar2Purchased;
+            Purchase.is3Purchase = cachedHighScoreData.isCar3Purchased;
+            return cachedHighScoreData;
+        }
+
         Debug.Log($"Loading high score from: {savePath}");
         if (!File.Exists(savePath))
         {
-            Debug.LogWarning("highscore.json does not exist, returning new HighScoreData");
-            return new HighScoreData();
+            Debug.LogWarning("highscore.json does not exist, creating with 117 coins");
+            HighScoreData defaultData = new HighScoreData { coins = 117 };
+            cachedHighScoreData = defaultData;
+            SaveToFile(defaultData);
+            coins = defaultData.coins;
+            Purchase.is2Purchase = defaultData.isCar2Purchased;
+            Purchase.is3Purchase = defaultData.isCar3Purchased;
+            return defaultData;
         }
 
         try
         {
             string json = File.ReadAllText(savePath);
             Debug.Log($"Read JSON: {json}");
+            if (string.IsNullOrWhiteSpace(json))
+            {
+                Debug.LogWarning("highscore.json is empty, creating with 117 coins");
+                HighScoreData defaultData = new HighScoreData { coins = 117 };
+                cachedHighScoreData = defaultData;
+                SaveToFile(defaultData);
+                coins = defaultData.coins;
+                Purchase.is2Purchase = defaultData.isCar2Purchased;
+                Purchase.is3Purchase = defaultData.isCar3Purchased;
+                return defaultData;
+            }
+
             HighScoreData data = JsonUtility.FromJson<HighScoreData>(json);
             if (data == null)
             {
-                Debug.LogError("Failed to deserialize highscore.json, returning new HighScoreData");
-                return new HighScoreData();
+                Debug.LogError("Failed to deserialize highscore.json, creating with 117 coins");
+                HighScoreData defaultData = new HighScoreData { coins = 117 };
+                cachedHighScoreData = defaultData;
+                SaveToFile(defaultData);
+                coins = defaultData.coins;
+                Purchase.is2Purchase = defaultData.isCar2Purchased;
+                Purchase.is3Purchase = defaultData.isCar3Purchased;
+                return defaultData;
             }
 
+            cachedHighScoreData = data;
             coins = data.coins;
             Purchase.is2Purchase = data.isCar2Purchased;
             Purchase.is3Purchase = data.isCar3Purchased;
@@ -411,21 +448,78 @@ public class PlatformerMovement : MonoBehaviour
         }
         catch (System.Exception e)
         {
-            Debug.LogError($"Error loading highscore.json: {e.Message}");
-            return new HighScoreData();
+            Debug.LogError($"Error loading highscore.json: {e.Message}, StackTrace: {e.StackTrace}");
+            HighScoreData defaultData = new HighScoreData { coins = 117 };
+            cachedHighScoreData = defaultData;
+            SaveToFile(defaultData);
+            coins = defaultData.coins;
+            Purchase.is2Purchase = defaultData.isCar2Purchased;
+            Purchase.is3Purchase = defaultData.isCar3Purchased;
+            return defaultData;
+        }
+    }
+
+    private void SaveToFile(HighScoreData data)
+    {
+        string json = JsonUtility.ToJson(data);
+        Debug.Log($"Saving JSON: {json}");
+
+        try
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(savePath));
+            using (FileStream fs = new FileStream(savePath, FileMode.Create, FileAccess.Write))
+            {
+                using (StreamWriter writer = new StreamWriter(fs))
+                {
+                    writer.Write(json);
+                    writer.Flush();
+                }
+            }
+            // Verify write
+            if (File.Exists(savePath))
+            {
+                string verifyJson = File.ReadAllText(savePath);
+                FileInfo fileInfo = new FileInfo(savePath);
+                Debug.Log($"Successfully saved highscore.json at {savePath}, exists: {File.Exists(savePath)}, content: {verifyJson}, attributes: {fileInfo.Attributes}, last write: {fileInfo.LastWriteTime}");
+            }
+            else
+            {
+                Debug.LogWarning($"File not found after write at {savePath}");
+            }
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Failed to save highscore.json at {savePath}: {e.Message}, StackTrace: {e.StackTrace}");
+            // Fallback to persistentDataPath
+            string fallbackPath = Application.persistentDataPath + "/highscore.json";
+            try
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(fallbackPath));
+                File.WriteAllText(fallbackPath, json);
+                if (File.Exists(fallbackPath))
+                {
+                    string verifyJson = File.ReadAllText(fallbackPath);
+                    Debug.Log($"Successfully saved highscore.json at fallback {fallbackPath}, exists: {File.Exists(fallbackPath)}, content: {verifyJson}");
+                    savePath = fallbackPath;
+                }
+            }
+            catch (System.Exception fallbackEx)
+            {
+                Debug.LogError($"Failed to save highscore.json at fallback {fallbackPath}: {fallbackEx.Message}, StackTrace: {fallbackEx.StackTrace}");
+            }
         }
     }
 
     public void UpdateCoins(int newCoinTotal)
     {
+        Debug.Log($"UpdateCoins: Setting coins to {newCoinTotal}, Car2Purchased: {Purchase.is2Purchase}, Car3Purchased: {Purchase.is3Purchase}");
         coins = newCoinTotal;
-        HighScoreData data = LoadHighScore() ?? new HighScoreData();
+        HighScoreData data = cachedHighScoreData ?? new HighScoreData();
         data.coins = coins;
         data.isCar2Purchased = Purchase.is2Purchase;
         data.isCar3Purchased = Purchase.is3Purchase;
-        string json = JsonUtility.ToJson(data);
-        File.WriteAllText(savePath, json);
-        Debug.Log($"Saved coins: {coins}, Car2Purchased: {data.isCar2Purchased}, Car3Purchased: {data.isCar3Purchased}");
+        cachedHighScoreData = data;
+        SaveToFile(data);
     }
 
     public List<Vector2> GetStoredPositions()
@@ -446,5 +540,20 @@ public class PlatformerMovement : MonoBehaviour
     public HighScoreData GetHighScoreData()
     {
         return LoadHighScore();
+    }
+
+    private bool IsPathWritable(string path)
+    {
+        try
+        {
+            string testPath = Path.Combine(Path.GetDirectoryName(path), "test.txt");
+            File.WriteAllText(testPath, "test");
+            File.Delete(testPath);
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
     }
 }
