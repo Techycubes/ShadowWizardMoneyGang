@@ -147,15 +147,14 @@ public class PlatformerMovement : MonoBehaviour
                 rotationSpeed -= 50f;
                 maxVelocity -= 1f;
             }
-            if (rotationSpeed >= 0)
-            {
-                float rotationAmount = -horizontalInput * rotationSpeed * Time.deltaTime;
-                transform.Rotate(0, 0, rotationAmount);
-            }
-            else
+            if (rotationSpeed < 0)
             {
                 rotationSpeed = 0;
             }
+
+            // Rotate the car
+            float rotationAmount = -horizontalInput * rotationSpeed * Time.deltaTime;
+            transform.Rotate(0, 0, rotationAmount);
 
             // Set animation direction
             if (Input.GetKey("a") && !Input.GetKey("d"))
@@ -172,23 +171,36 @@ public class PlatformerMovement : MonoBehaviour
             }
             animator.SetInteger("TurnDirection", Direction);
 
-            Vector2 forwardDirection = transform.up;
-            Vector2 targetVelocity = forwardDirection * verticalInput * moveSpeed;
-
-            if (verticalInput != 0)
+            // Raycast to prevent phasing
+            Vector2 rayDirection = verticalInput >= 0 ? transform.up : -transform.up;
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, rayDirection, 1f);
+            if (hit.collider != null && (hit.collider.CompareTag("Ob1") || hit.collider.CompareTag("Ob2") || hit.collider.CompareTag("Ob3")))
             {
-                currentVelocity = Vector2.MoveTowards(currentVelocity, targetVelocity, acceleration * Time.deltaTime);
+                rb.velocity = Vector2.zero;
+                currentVelocity = Vector2.zero;
             }
             else
             {
-                currentVelocity = Vector2.MoveTowards(currentVelocity, Vector2.zero, deceleration * Time.deltaTime);
-            }
+                // Calculate velocity
+                Vector2 forwardDirection = transform.up;
+                Vector2 targetVelocity = forwardDirection * verticalInput * moveSpeed;
 
-            rb.velocity = currentVelocity;
+                if (verticalInput != 0)
+                {
+                    currentVelocity = Vector2.MoveTowards(currentVelocity, targetVelocity, acceleration * Time.deltaTime);
+                }
+                else
+                {
+                    currentVelocity = Vector2.MoveTowards(currentVelocity, Vector2.zero, deceleration * Time.deltaTime);
+                }
 
-            if (rb.velocity.magnitude > maxVelocity)
-            {
-                rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
+                rb.velocity = currentVelocity;
+
+                // Clamp velocity
+                if (rb.velocity.magnitude > maxVelocity)
+                {
+                    rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
+                }
             }
         }
         else if (IsSpunOut)
@@ -197,6 +209,7 @@ public class PlatformerMovement : MonoBehaviour
             verticalInput = 0f;
             Direction = 0;
             animator.SetInteger("TurnDirection", 0);
+            rb.velocity = Vector2.zero;
         }
         else if (SpinOutLives <= 0)
         {
@@ -212,12 +225,14 @@ public class PlatformerMovement : MonoBehaviour
             case "Ob1":
             case "Ob2":
             case "Ob3":
-                Debug.Log(collision.gameObject.tag);
-                if (!IsSpunOut)
+                Debug.Log($"Collision with {collision.gameObject.tag}, Velocity: {rb.velocity}, VerticalInput: {verticalInput}");
+                if (!IsSpunOut && SpinOutLives > 0)
                 {
                     StartCoroutine(SpinOutEffect());
                     SpinOutLives--;
                 }
+                rb.velocity = Vector2.zero;
+                currentVelocity = Vector2.zero;
                 break;
             case "Ob4":
                 Debug.Log("Ob4");
@@ -305,21 +320,28 @@ public class PlatformerMovement : MonoBehaviour
         moveSpeed = 0f;
         rotationSpeed = 360f;
 
-        Vector2 backwardDirection = -transform.up;
-        float backwardDistance = 1f;
+        Vector2 movementDirection = verticalInput >= 0 ? -transform.up : transform.up;
+        float moveDistance = 1.5f;
         Vector2 startPosition = transform.position;
-        Vector2 targetPosition = startPosition + (backwardDirection * backwardDistance);
-        float backwardDuration = 0.5f;
+        Vector2 targetPosition = startPosition + (movementDirection * moveDistance);
+        float moveDuration = 0.5f;
+
+        RaycastHit2D hit = Physics2D.Raycast(startPosition, movementDirection, moveDistance);
+        if (hit.collider != null && (hit.collider.CompareTag("Ob1") || hit.collider.CompareTag("Ob2") || hit.collider.CompareTag("Ob3")))
+        {
+            targetPosition = startPosition + (movementDirection * hit.distance * 0.9f);
+        }
 
         float elapsedTime = 0f;
-        while (elapsedTime < backwardDuration)
+        while (elapsedTime < moveDuration)
         {
             elapsedTime += Time.deltaTime;
-            float t = elapsedTime / backwardDuration;
-            transform.position = Vector2.Lerp(startPosition, targetPosition, t);
+            float t = elapsedTime / moveDuration;
+            Vector2 newPosition = Vector2.Lerp(startPosition, targetPosition, t);
+            rb.MovePosition(newPosition);
             yield return null;
         }
-        transform.position = targetPosition;
+        rb.MovePosition(targetPosition);
 
         yield return new WaitForSeconds(0.5f);
 
@@ -475,7 +497,6 @@ public class PlatformerMovement : MonoBehaviour
                     writer.Flush();
                 }
             }
-            // Verify write
             if (File.Exists(savePath))
             {
                 string verifyJson = File.ReadAllText(savePath);
@@ -490,7 +511,6 @@ public class PlatformerMovement : MonoBehaviour
         catch (System.Exception e)
         {
             Debug.LogError($"Failed to save highscore.json at {savePath}: {e.Message}, StackTrace: {e.StackTrace}");
-            // Fallback to persistentDataPath
             string fallbackPath = Application.persistentDataPath + "/highscore.json";
             try
             {
