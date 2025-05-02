@@ -153,11 +153,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1525883702772188078, guid: 4ab3fb9294748d5468fe4cd11a63c1a3, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 160
+      value: 136.32
       objectReference: {fileID: 0}
     - target: {fileID: 1525883702772188078, guid: 4ab3fb9294748d5468fe4cd11a63c1a3, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 30
+      value: 108.154
       objectReference: {fileID: 0}
     - target: {fileID: 1525883702772188078, guid: 4ab3fb9294748d5468fe4cd11a63c1a3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -189,11 +189,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1525883702772188078, guid: 4ab3fb9294748d5468fe4cd11a63c1a3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -470.5
+      value: -480.84
       objectReference: {fileID: 0}
     - target: {fileID: 1525883702772188078, guid: 4ab3fb9294748d5468fe4cd11a63c1a3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 241.5
+      value: 202.423
       objectReference: {fileID: 0}
     - target: {fileID: 1525883702772188078, guid: 4ab3fb9294748d5468fe4cd11a63c1a3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -822,6 +822,7 @@ GameObject:
   - component: {fileID: 881431546}
   - component: {fileID: 881431545}
   - component: {fileID: 881431544}
+  - component: {fileID: 881431547}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -903,6 +904,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &881431547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881431543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!1 &987364925
 GameObject:
   m_ObjectHideFlags: 0
