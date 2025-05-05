@@ -111,7 +111,7 @@ public class PlatformerMovement : MonoBehaviour
         {
             spriteRenderer.sprite = newSprite2;
             moveSpeed = 11f;
-            acceleration = 7f;
+            acceleration = 6f;
             deceleration = 8f;
             rotationSpeed = 170f;
             maxVelocity = 15f;
