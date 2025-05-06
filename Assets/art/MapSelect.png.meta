@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c3fe8840636a670419ab7e7aeae92f4c
+guid: 9f0e298e1dca0134882aef9cdb62c492
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6263892067745975060
-    second: F2StartScreen_0
+      213: 3489733115693143844
+    second: MapSelect_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: F2StartScreen_0
+      name: MapSelect_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 9600
-        height: 8000
+        width: 2400
+        height: 1600
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,8 +114,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ce43d961a5f2219a0800000000000000
-      internalID: -6263892067745975060
+      spriteID: 4279ec187c50e6030800000000000000
+      internalID: 3489733115693143844
       vertices: []
       indices: 
       edges: []
