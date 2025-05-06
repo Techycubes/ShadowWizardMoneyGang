@@ -48,6 +48,7 @@ public class PlatformerMovement : MonoBehaviour
         public int coins; // Total coins across all levels
         public bool isCar2Purchased; // Persist Car2 purchase
         public bool isCar3Purchased; // Persist Car3 purchase
+        public bool hasPlayed; // Track if game has been played
         public List<LevelData> levels = new List<LevelData>();
     }
 
@@ -65,6 +66,15 @@ public class PlatformerMovement : MonoBehaviour
         savePath = Path.Combine("C:/Formula2Game", "highscore.json");
         Debug.Log($"Awake: savePath={savePath}, writable={IsPathWritable(savePath)}");
         LoadHighScore();
+
+        // Check if this is the first time playing
+        if (!cachedHighScoreData.hasPlayed)
+        {
+            Debug.Log("First time playing, loading Introduction scene");
+            cachedHighScoreData.hasPlayed = true;
+            SaveToFile(cachedHighScoreData); // Save hasPlayed = true
+            SceneManager.LoadScene("Introduction");
+        }
     }
 
     void Start()
@@ -381,6 +391,7 @@ public class PlatformerMovement : MonoBehaviour
         data.coins += newCoins;
         data.isCar2Purchased = Purchase.is2Purchase;
         data.isCar3Purchased = Purchase.is3Purchase;
+        data.hasPlayed = true; // Ensure hasPlayed remains true
 
         LevelData levelData = data.levels.Find(ld => ld.level == currentLevel);
         if (levelData == null)
@@ -412,7 +423,7 @@ public class PlatformerMovement : MonoBehaviour
     {
         if (cachedHighScoreData != null)
         {
-            Debug.Log($"Returning cached HighScoreData, coins: {cachedHighScoreData.coins}, Car2Purchased: {cachedHighScoreData.isCar2Purchased}, Car3Purchased: {cachedHighScoreData.isCar3Purchased}");
+            Debug.Log($"Returning cached HighScoreData, coins: {cachedHighScoreData.coins}, Car2Purchased: {cachedHighScoreData.isCar2Purchased}, Car3Purchased: {cachedHighScoreData.isCar3Purchased}, HasPlayed: {cachedHighScoreData.hasPlayed}");
             coins = cachedHighScoreData.coins;
             Purchase.is2Purchase = cachedHighScoreData.isCar2Purchased;
             Purchase.is3Purchase = cachedHighScoreData.isCar3Purchased;
@@ -422,8 +433,8 @@ public class PlatformerMovement : MonoBehaviour
         Debug.Log($"Loading high score from: {savePath}");
         if (!File.Exists(savePath))
         {
-            Debug.LogWarning("highscore.json does not exist, creating with 117 coins");
-            HighScoreData defaultData = new HighScoreData { coins = 117 };
+            Debug.LogWarning("highscore.json does not exist, creating with 117 coins and hasPlayed=false");
+            HighScoreData defaultData = new HighScoreData { coins = 117, hasPlayed = false };
             cachedHighScoreData = defaultData;
             SaveToFile(defaultData);
             coins = defaultData.coins;
@@ -438,8 +449,8 @@ public class PlatformerMovement : MonoBehaviour
             Debug.Log($"Read JSON: {json}");
             if (string.IsNullOrWhiteSpace(json))
             {
-                Debug.LogWarning("highscore.json is empty, creating with 117 coins");
-                HighScoreData defaultData = new HighScoreData { coins = 117 };
+                Debug.LogWarning("highscore.json is empty, creating with 117 coins and hasPlayed=false");
+                HighScoreData defaultData = new HighScoreData { coins = 117, hasPlayed = false };
                 cachedHighScoreData = defaultData;
                 SaveToFile(defaultData);
                 coins = defaultData.coins;
@@ -451,8 +462,8 @@ public class PlatformerMovement : MonoBehaviour
             HighScoreData data = JsonUtility.FromJson<HighScoreData>(json);
             if (data == null)
             {
-                Debug.LogError("Failed to deserialize highscore.json, creating with 117 coins");
-                HighScoreData defaultData = new HighScoreData { coins = 117 };
+                Debug.LogError("Failed to deserialize highscore.json, creating with 117 coins and hasPlayed=false");
+                HighScoreData defaultData = new HighScoreData { coins = 117, hasPlayed = false };
                 cachedHighScoreData = defaultData;
                 SaveToFile(defaultData);
                 coins = defaultData.coins;
@@ -465,13 +476,13 @@ public class PlatformerMovement : MonoBehaviour
             coins = data.coins;
             Purchase.is2Purchase = data.isCar2Purchased;
             Purchase.is3Purchase = data.isCar3Purchased;
-            Debug.Log($"Loaded coins: {data.coins}, Car2Purchased: {data.isCar2Purchased}, Car3Purchased: {data.isCar3Purchased}");
+            Debug.Log($"Loaded coins: {data.coins}, Car2Purchased: {data.isCar2Purchased}, Car3Purchased: {data.isCar3Purchased}, HasPlayed: {data.hasPlayed}");
             return data;
         }
         catch (System.Exception e)
         {
             Debug.LogError($"Error loading highscore.json: {e.Message}, StackTrace: {e.StackTrace}");
-            HighScoreData defaultData = new HighScoreData { coins = 117 };
+            HighScoreData defaultData = new HighScoreData { coins = 117, hasPlayed = false };
             cachedHighScoreData = defaultData;
             SaveToFile(defaultData);
             coins = defaultData.coins;
@@ -532,12 +543,13 @@ public class PlatformerMovement : MonoBehaviour
 
     public void UpdateCoins(int newCoinTotal)
     {
-        Debug.Log($"UpdateCoins: Setting coins to {newCoinTotal}, Car2Purchased: {Purchase.is2Purchase}, Car3Purchased: {Purchase.is3Purchase}");
+        Debug.Log($"UpdateCoins: Setting coins to {newCoinTotal}, Car2Purchased: {Purchase.is2Purchase}, Car3Purchased: {Purchase.is3Purchase}, HasPlayed: {cachedHighScoreData.hasPlayed}");
         coins = newCoinTotal;
         HighScoreData data = cachedHighScoreData ?? new HighScoreData();
         data.coins = coins;
         data.isCar2Purchased = Purchase.is2Purchase;
         data.isCar3Purchased = Purchase.is3Purchase;
+        data.hasPlayed = true; // Ensure hasPlayed remains true
         cachedHighScoreData = data;
         SaveToFile(data);
     }
