@@ -63,7 +63,7 @@ public class PlatformerMovement : MonoBehaviour
 
     void Awake()
     {
-        savePath = Path.Combine("C:/Formula2Game", "highscore.json");
+        savePath = Path.Combine(Application.persistentDataPath, "highscore.json");
         Debug.Log($"Awake: savePath={savePath}, writable={IsPathWritable(savePath)}");
         LoadHighScore();
 
@@ -433,8 +433,8 @@ public class PlatformerMovement : MonoBehaviour
         Debug.Log($"Loading high score from: {savePath}");
         if (!File.Exists(savePath))
         {
-            Debug.LogWarning("highscore.json does not exist, creating with 117 coins and hasPlayed=false");
-            HighScoreData defaultData = new HighScoreData { coins = 117, hasPlayed = false };
+            Debug.LogWarning("highscore.json does not exist, creating with 0 coins and hasPlayed=false");
+            HighScoreData defaultData = new HighScoreData { coins = 0, hasPlayed = false };
             cachedHighScoreData = defaultData;
             SaveToFile(defaultData);
             coins = defaultData.coins;
@@ -449,8 +449,8 @@ public class PlatformerMovement : MonoBehaviour
             Debug.Log($"Read JSON: {json}");
             if (string.IsNullOrWhiteSpace(json))
             {
-                Debug.LogWarning("highscore.json is empty, creating with 117 coins and hasPlayed=false");
-                HighScoreData defaultData = new HighScoreData { coins = 117, hasPlayed = false };
+                Debug.LogWarning("highscore.json is empty, creating with 0 coins and hasPlayed=false");
+                HighScoreData defaultData = new HighScoreData { coins = 0, hasPlayed = false };
                 cachedHighScoreData = defaultData;
                 SaveToFile(defaultData);
                 coins = defaultData.coins;
@@ -462,8 +462,8 @@ public class PlatformerMovement : MonoBehaviour
             HighScoreData data = JsonUtility.FromJson<HighScoreData>(json);
             if (data == null)
             {
-                Debug.LogError("Failed to deserialize highscore.json, creating with 117 coins and hasPlayed=false");
-                HighScoreData defaultData = new HighScoreData { coins = 117, hasPlayed = false };
+                Debug.LogWarning("Failed to deserialize highscore.json, creating with 0 coins and hasPlayed=false");
+                HighScoreData defaultData = new HighScoreData { coins = 0, hasPlayed = false };
                 cachedHighScoreData = defaultData;
                 SaveToFile(defaultData);
                 coins = defaultData.coins;
@@ -482,7 +482,7 @@ public class PlatformerMovement : MonoBehaviour
         catch (System.Exception e)
         {
             Debug.LogError($"Error loading highscore.json: {e.Message}, StackTrace: {e.StackTrace}");
-            HighScoreData defaultData = new HighScoreData { coins = 117, hasPlayed = false };
+            HighScoreData defaultData = new HighScoreData { coins = 0, hasPlayed = false };
             cachedHighScoreData = defaultData;
             SaveToFile(defaultData);
             coins = defaultData.coins;
@@ -522,7 +522,7 @@ public class PlatformerMovement : MonoBehaviour
         catch (System.Exception e)
         {
             Debug.LogError($"Failed to save highscore.json at {savePath}: {e.Message}, StackTrace: {e.StackTrace}");
-            string fallbackPath = Application.persistentDataPath + "/highscore.json";
+            string fallbackPath = Application.persistentDataPath + "/highscore_fallback.json";
             try
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(fallbackPath));
